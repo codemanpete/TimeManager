@@ -1,0 +1,28 @@
+For our CS321-02 Group Project
+
+
+ Task Scheduler/Calendar application.
+
+The features this application would have would include, but not be limited to:
+
+1. Multiple User Support (with some sort of Login)
+
+2. Add/Delete/Edit User information
+
+3. Add/Edit/Remove Scheduled Task Information (Start date, End Date, Notes)
+
+4. Ability to lookup other system users
+
+5. Ability to see if other users are busy
+
+6. Ability to schedule meetings with other users
+
+7. Ability to add group assets to tasks (conference rooms, offices, projectors, etc)
+
+8. Program alerts users 10/15/20/30 minutes before appointment
+
+9. Scheduled Task information stored in local or shared database (flat file or SQL database)
+
+
+10. Daily/Weekly/Monthly Views
+
