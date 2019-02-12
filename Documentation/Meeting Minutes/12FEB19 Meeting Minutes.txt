@@ -1,0 +1,23 @@
+12FEB19 Meeting Minutes
+
+Attendees: Brendan Walker, Peter Cheng, Sean Curtis, Charles McEniry
+Conducted: 9:10 AM
+Topics Covered:
+
+1. Ping user to determine status (available, online, etc)
+2. Determine if currently at workstation.
+3. User can only choose appointment times that are not already taken. Available/Not available.
+4. User can accept/Reject appointment. 
+5. Adding users to teams/groups to schedule team meetings
+6. Contact list
+
+Sending additional use cases to professor for approval
+
+Discuss User GUI Look and Feel.
+1. Minimalist menu bar
+2. Buttons for Most functions
+3. Window design
+4. Consistent interface design
+
+
+Adjourned: 9:40 AM

@@ -23,6 +23,14 @@ The features this application would have would include, but not be limited to:
 
 9. Scheduled Task information stored in local or shared database (flat file or SQL database)
 
+10. Adding users to teams/groups to schedule team meetings
 
-10. Daily/Weekly/Monthly Views
+11. Contact list
+
+12. Daily/Weekly/Monthly Views
+
+13. Dynamically scheduling 
+
+14. Public and Private scheduled events. 
+
 
