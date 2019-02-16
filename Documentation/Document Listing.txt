@@ -1,0 +1,14 @@
+CS321-02 Document Due Listing
+
+1. Analysis Description
+2. Major Use Cases
+3. Class diagram for model package
+4. One sample sequence diagram
+5. Sample state diagrams
+
+Phase 1:
+1. Major Use Cases
+2. Class Diagram for Model and Input/output
+3. 1 – 2 sample sequence diagrams
+4. 1 sample state diagram
+5. Rudimentary implementation (code)
