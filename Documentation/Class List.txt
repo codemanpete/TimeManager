@@ -1,0 +1,16 @@
+1. User – hold user information and individual calendar
+a. String Username
+b. hash Password
+c. String First name
+d. String Last name
+e. int ID Number
+f. Has many appointments
+
+2. Appointment – hold appointment information (start/end date/time, Users invited, other data)
+a. Has many users
+b. Start Date/Time
+c. End Date/Time
+3. Asset – an item you can add to an appointment
+4. Location – a place for an appointment
+5. File read/write – to handle file/database IO.
+6. Reminder – Check appointments and remind when X minutes from appointment

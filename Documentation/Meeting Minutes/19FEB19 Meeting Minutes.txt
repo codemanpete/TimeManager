@@ -1,0 +1,12 @@
+19FEB19 Meeting Minutes
+
+Attendees: Brendan Walker, Peter Cheng, Sean Curtis, Charles McEniry
+Conducted: 9:10 AM
+Topics Covered:
+
+1. Needed classes
+2. Appointment list implementation options
+3. Calendar implementation
+
+
+Adjourned: 9:40 AM
