@@ -1,16 +1,55 @@
 1. User – hold user information and individual calendar
-a. String Username
-b. hash Password
-c. String First name
-d. String Last name
-e. int ID Number
-f. Has many appointments
+ a. String Username
+ b. hash Password
+ c. String First name
+ d. String Last name
+ e. int ID Number
+ f. Has many appointments
+ g. status indicator
+ h. contact list
+ i. other data (phone number, address, etc)
 
 2. Appointment – hold appointment information (start/end date/time, Users invited, other data)
-a. Has many users
-b. Start Date/Time
-c. End Date/Time
+ a. Has many users
+ b. Start Date/Time
+ c. End Date/Time
+ d. List of assets
+ e. has a reminder
+
 3. Asset – an item you can add to an appointment
+ a. string asset name
+ b. boolean in use
+
 4. Location – a place for an appointment
+ a. string location name
+ b. other data (address, phone number)
+
 5. File read/write – to handle file/database IO.
+ a. read function
+ b. write function
+
 6. Reminder – Check appointments and remind when X minutes from appointment
+ a. current time
+ b. remind time
+
+7. System class - Initializes other classes and starts system. 
+ a. Add user
+ b. change user data
+ c. remove user
+ d. login
+ e. Lookup user
+ f. check user status
+ g. ArrayList of users
+ h. ArrayList of groups
+ i. check user status
+
+8. Group Class - groups of users, maybe a subclass?
+ a. list of users in group
+ b. list of appointments
+ 
+
+
+
+
+
+
