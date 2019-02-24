@@ -1,0 +1,10 @@
+Asset
+
+Responsibilities:
+Asset information
+In use indicator
+
+
+
+Collaborators:
+Appointment

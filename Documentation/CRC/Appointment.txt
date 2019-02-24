@@ -1,0 +1,14 @@
+Appointment
+
+Responsibilities:
+Start/Stop date and time
+Asset List
+User List
+Reminders
+
+
+
+Collaborators:
+Reminder
+User
+Asset

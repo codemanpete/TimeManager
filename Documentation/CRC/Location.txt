@@ -1,0 +1,9 @@
+Location
+
+Responsibilities:
+Stores appointment location data
+
+
+
+Collaborators:
+Appointment

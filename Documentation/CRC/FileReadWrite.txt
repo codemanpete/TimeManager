@@ -1,0 +1,9 @@
+FileReadWrite
+
+Responsibilities:
+Reads and Writes data to file or database
+
+
+
+Collaborators:
+User ?

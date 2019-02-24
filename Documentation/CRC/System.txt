@@ -1,0 +1,12 @@
+System class
+
+Responsibilities:
+initializes user list
+initializes group list
+login
+checks user status
+Add/Remove/Change User
+
+Collaborators:
+User
+FileReadWrite

@@ -1,0 +1,11 @@
+Reminder
+
+Responsibilities:
+Current time and remind time
+
+
+
+Collaborators:
+Java Calendar
+Java Date
+Appointment

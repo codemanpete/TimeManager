@@ -1,0 +1,9 @@
+Group
+
+Responsibilities:
+List of users in the group
+Group name
+
+
+Collaborators:
+User

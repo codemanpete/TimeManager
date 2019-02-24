@@ -1,0 +1,12 @@
+User
+
+Responsibilities:
+Holds user data
+List of appointments
+user status indicator
+Group membership
+
+
+Collaborators:
+Appointment 
+Group
