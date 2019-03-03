@@ -1,13 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * DateOutOfRangeException - for Appointment class
+ * for Time Manager Class Project
+ * for CS321-02
  */
 package appointment;
 
 /**
  *
- * @author Sean
+ * @author Sean J Curtis
  */
 public class DateOutOfRangeException extends RuntimeException {
     public DateOutOfRangeException() {
