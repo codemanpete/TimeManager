@@ -1,0 +1,11 @@
+12FEB19 Meeting Minutes
+
+Attendees: Peter Cheng, Sean Curtis, Charles McEniry
+Conducted: 9:10 AM
+Topics Covered:
+
+1. Sean went over the UML.
+2. Went over Trello workflow and updated.
+3. Discussed using GSON and converting objects to JSON.
+4. Discussed cleaning up project directory.
+5. 
