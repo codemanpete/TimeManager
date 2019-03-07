@@ -12,11 +12,28 @@ Members:
  */
 package timemanager;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class TimeManager {
 
     public static void main(String[] args) {
-        new MainFrame();
+        
+        try {
+            UserClass test = new UserClass();
+            ResultSet rs;
+            rs = test.displayUsers();
+            while(rs.next()){
+                System.out.println(rs.getString("uname")+" "+rs.getString("password"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        LoginFrame loginframe = new LoginFrame();
     }
     
 }
