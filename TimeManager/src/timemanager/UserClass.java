@@ -1,19 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package timemanager;
 
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static jdk.nashorn.internal.objects.NativeRegExp.test;
 
 public class UserClass {
     private static Connection con;
     private static boolean hasData = false;
+    // Display Usernames and Passwords
     public ResultSet displayUsers() throws SQLException{
-        //System.out.println("displayUsers()");
+        // Check Connection
         if(con == null){
             try {
                 getConnection();
@@ -25,7 +23,7 @@ public class UserClass {
         ResultSet res = state.executeQuery("SELECT uname, password FROM user");
         return res;
     }
-    
+    // Get a Connection to the user.db SQLite Database
     private void getConnection() throws ClassNotFoundException, SQLException {
         // Please NOTE: This is absolutely CRITICAL
         // Must add sqlite-jdbc-(whatever version) to the library
@@ -36,7 +34,7 @@ public class UserClass {
         con = DriverManager.getConnection("jdbc:sqlite:user.db");
         initialize();
     }
-    
+    // Create a database if there is none
     private void initialize() throws SQLException {
         System.out.println("initializing...");
         if(!hasData){
@@ -58,14 +56,14 @@ public class UserClass {
                 prep2.execute();
             }
             else{
-                //System.out.println("Check: ResultSet res is true.");
+                // No action necessary
             }
         }
     }
+    // Add a User with unique Username and Password
     public void addUser(String userName, String password){
-        //System.out.println("addUsers()");
         try {
-            if(con==null){
+            if(con==null){ // Establish a Connection to user.db
                 try {
                     getConnection();
                 } catch (ClassNotFoundException ex) {
@@ -74,14 +72,39 @@ public class UserClass {
                     Logger.getLogger(UserClass.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            PreparedStatement prep = con.prepareStatement("INSERT INTO user values(?,?,?);");
-            prep.setString(2, userName);
-            prep.setString(3, password);
-            prep.execute();
+            // Check if there is an existing user with Username, prevent duplicates
+            String query = "SELECT * FROM user WHERE uname=?"; // query usernames
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, userName); // search for userName
+            ResultSet rs = pst.executeQuery(); // execute search
+            int count = 0;
+            while(rs.next()){ // if userName is found
+                count++; // increment count, should not be any duplicates
+            }
+            if(count == 1){
+                JOptionPane.showMessageDialog(null,"Username Already Exists",
+                "Error",JOptionPane.ERROR_MESSAGE); 
+            }
+            else{ // userName is not in user.db
+                PreparedStatement prep = con.prepareStatement("INSERT INTO user values(?,?,?);");
+                prep.setString(2, userName);
+                prep.setString(3, password);
+                prep.execute();
+                JOptionPane.showMessageDialog(null,"New User Created",
+                "Try Logging In",JOptionPane.PLAIN_MESSAGE);
+                // Display new list of Users and Passwords
+                System.out.println("** Users and Passwords **");
+                ResultSet rs1;
+                rs1 = this.displayUsers();
+                while(rs1.next()){
+                    System.out.println(rs1.getString("uname")+" "+rs1.getString("password"));
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(UserClass.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    // Verify User's username and password
     public boolean checkUserPW(String userName, String password){
         boolean result = false;
         try {

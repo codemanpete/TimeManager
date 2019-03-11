@@ -73,9 +73,7 @@ public class LoginFrame extends JFrame implements ActionListener {
             String uname = textfield_username.getText();
             String pass = passwordfield.getText();
             UserClass test = new UserClass();
-            test.addUser(uname,pass);
-            JOptionPane.showMessageDialog(this,"New User Created",
-                "Try Logging In",JOptionPane.ERROR_MESSAGE);  
+            test.addUser(uname,pass);  
         }
     }
 }
