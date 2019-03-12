@@ -1,3 +1,5 @@
+package timemanager;
+
 /*
     CS 321
     Team Project
@@ -10,8 +12,9 @@ Members:
     Peter Cheng
     Brendan Walker
  */
-package timemanager;
 
+
+import User.UserClass;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;

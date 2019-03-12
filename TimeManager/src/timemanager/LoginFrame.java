@@ -1,5 +1,6 @@
 package timemanager;
 
+import User.UserClass;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;

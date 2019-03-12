@@ -1,4 +1,4 @@
-package timemanager;
+package User;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -26,7 +26,7 @@ public class UserClass {
     // Get a Connection to the user.db SQLite Database
     private void getConnection() throws ClassNotFoundException, SQLException {
         // Please NOTE: This is absolutely CRITICAL
-        // Must add sqlite-jdbc-(whatever version) to the library
+        // Must add sqlite-jdbc-3.8.6 to the library
         // Right Click the Libraries tab under the project tab to the left
         // Add .jar file
         System.out.println("getting connection...");
