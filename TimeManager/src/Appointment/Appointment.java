@@ -23,6 +23,8 @@ public class Appointment implements Comparable<Appointment> {
     private Calendar startTime;
     private Calendar endTime;
     private String apptName;
+	private String userName;
+	private int userID;
     private ArrayList<String> userList;
     private ArrayList<Asset> assetList;
     private Reminder reminder;
@@ -212,6 +214,38 @@ public class Appointment implements Comparable<Appointment> {
     */
    public Asset getAssetList() {
        return assetList.get(0);
+   }
+   
+   /**
+    * setUserName - sets userName variable
+    * @param userName
+    */
+   public void setUserName(String userName) {
+	   this.userName = userName;
+   }
+   
+   /**
+    * getUserName - retreves userName
+    * @return UserName variable
+    */
+   public String getUserName() {
+	   return userName;
+   }
+   
+   /**
+    * setUserID - sets userID variable
+    * @param userID
+    */
+   public void setUserID(int userID) {
+	   this.userID = userID;
+   }
+   
+   /**
+    * getUserID - retreves UserID variable
+    * @return userID variable
+    */
+   public int getUserID() {
+	   return userID;
    }
     
     
