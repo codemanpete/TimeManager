@@ -55,7 +55,7 @@ public class NewDayPanel extends JPanel{
         
         for (Appointment a : todaysAppts) {
             ApptPanel apanel = new ApptPanel(a);
-            System.out.println("added");
+            //System.out.println("added");
             
             add(apanel);
             repaint();
@@ -68,7 +68,7 @@ public class NewDayPanel extends JPanel{
     private void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
         // TODO add your handling code here:
        // System.out.println(label.getText());
-        DayWindowPopUp pop = new DayWindowPopUp(topFrame, true, label, todaysAppts);
+        NewDayWindowPopUp pop = new NewDayWindowPopUp(topFrame, true, label, todaysAppts);
         pop.setLocationRelativeTo(topFrame);
         pop.setVisible(true);
     }

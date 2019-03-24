@@ -32,8 +32,8 @@ public class NewDayWindowPopUp extends JDialog {
 
         
         
-        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-
+        //setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        setLayout(new FlowLayout());
         
         dayLabel = label;
         JPanel topPanel = new JPanel(true);
@@ -43,15 +43,20 @@ public class NewDayWindowPopUp extends JDialog {
         
         add(topPanel);
         
-        JLabel apptName;
+        JPanel bottomPanel = new JPanel(true);
+        bottomPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        //bottomPanel.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        bottomPanel.setLayout(new FlowLayout());
+        //JLabel apptName;
         
         for (Appointment a : appts) {
             ApptPanel apanel = new ApptPanel(a);
             System.out.println("added");
-            
-            add(apanel);
-            repaint();
+            bottomPanel.setVisible(true);
+            bottomPanel.add(apanel);
+            //repaint();
         }
+        add(bottomPanel);
         
         pack();
     }
