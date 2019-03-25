@@ -3,7 +3,7 @@
  * CS321-02
  * 
  */
-package appointment;
+package Appointment;
 import java.util.*;
 import static java.util.Calendar.DAY_OF_MONTH;
 import static java.util.Calendar.HOUR_OF_DAY;

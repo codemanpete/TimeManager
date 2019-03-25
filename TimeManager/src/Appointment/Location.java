@@ -3,7 +3,7 @@
  * For CS321-02 Group Project
  * Time Manager
  */
-package appointment;
+package Appointment;
 
 /**
  *

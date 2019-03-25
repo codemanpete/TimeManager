@@ -1,7 +1,7 @@
 /*
  * Asset Class for CS321-02 Group Project
  */
-package appointment;
+package Appointment;
 
 /**
  *
