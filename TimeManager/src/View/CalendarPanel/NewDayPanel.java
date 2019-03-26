@@ -7,6 +7,9 @@ package View.CalendarPanel;
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
+import View.CalendarView.*;
+import Appointment.*;
+import View.CalendarDialog.*;
 
 /**
  *

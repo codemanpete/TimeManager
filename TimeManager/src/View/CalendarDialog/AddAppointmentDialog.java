@@ -7,6 +7,9 @@ package View.CalendarDialog;
 
 import java.awt.Frame;
 import javax.swing.JFrame;
+import Appointment.*;
+import User.*;
+//import 
 
 /**
  *
@@ -19,15 +22,15 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         String apptLocation;
         int apptStartYear = 2019;
         int apptEndYear = 2019;
-        int apptStartMonth;
-        int apptEndMonth;
-        int apptStartDay;
-        int apptEndDay;
-        int apptStartHour;
-        int apptEndHour;
-        int apptStartMin;
-        int apptEndMin;
-        int apptReminder;
+        int apptStartMonth = 0;
+        int apptEndMonth = 1;
+        int apptStartDay = 1;
+        int apptEndDay = 1;
+        int apptStartHour = 00;
+        int apptEndHour = 00;
+        int apptStartMin = 00;
+        int apptEndMin = 00;
+        int apptReminder = 00;
         User user;
         Frame frame;
 
@@ -233,7 +236,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         
         user.addAppointment(appt);
         
-        AppointmentDB apptDB = new AppointmentDB("jdbc:sqlite:timemanager.db");
+        AppointmentDB apptDB = new AppointmentDB("jdbc:sqlite:user.db");
         apptDB.setData(appt);
         
         InfoDialog diag = new InfoDialog(frame, true, "Appointment Added");

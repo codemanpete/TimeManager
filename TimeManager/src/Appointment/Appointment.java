@@ -11,24 +11,25 @@ import static java.util.Calendar.MINUTE;
 import static java.util.Calendar.MONTH;
 import static java.util.Calendar.SECOND;
 import static java.util.Calendar.YEAR;
+import java.io.Serializable;
 
 /**
  *
  * @author Sean J Curtis
- * @version 0.2
+ * @version 0.3
  */
 public class Appointment implements Comparable<Appointment> {
 
-   
+    private String userName;
     private Calendar startTime;
     private Calendar endTime;
     private String apptName;
-	private String userName;
-	private int userID;
     private ArrayList<String> userList;
     private ArrayList<Asset> assetList;
     private Reminder reminder;
+    private int remind;
     private Location location;
+    private int userID;
     
     
      /**
@@ -55,6 +56,14 @@ public class Appointment implements Comparable<Appointment> {
      */
     public String getApptName() {
         return apptName;
+    }
+    
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
+    public String getUserName() {
+        return this.userName;
     }
     
      /**
@@ -85,9 +94,9 @@ public class Appointment implements Comparable<Appointment> {
      * getStartTime - Returns Date object for the Appointment starting time
      * @return startTime Date object
      */
-    public Date getStartTime() {
+    public Calendar getStartTime() {
        
-        return startTime.getTime();
+        return startTime;
     }
     
       /**
@@ -123,8 +132,8 @@ public class Appointment implements Comparable<Appointment> {
      * getEndTime - returns a Date object of the Appointment end time
      * @return endTime
      */
-    public Date getEndTime() {
-        return endTime.getTime();
+    public Calendar getEndTime() {
+        return endTime;
     }
     
      /**
@@ -132,7 +141,8 @@ public class Appointment implements Comparable<Appointment> {
      * @param min integer of minutes to remind before startTime of Appointment object
      */
     public void setReminder(int min) {
-        reminder = new Reminder(startTime.get(YEAR), 
+        this.remind = min;
+        this.reminder = new Reminder(startTime.get(YEAR), 
                                 startTime.get(MONTH), 
                                 startTime.get(DAY_OF_MONTH), 
                                 startTime.get(HOUR_OF_DAY), 
@@ -209,44 +219,63 @@ public class Appointment implements Comparable<Appointment> {
    }
    
    /**
-    * getAssetList - retreves an asset
+    * remAsset - remove Asset from assetList
+    * @param a - asset to remove
+    */
+   public void remAsset(Asset a) {
+              
+       assetList.remove(a);
+   }
+   
+   /**
+    * getAssetList - retrieves an asset
     * @return the first object in assetList array
     */
-   public Asset getAssetList() {
-       return assetList.get(0);
+   public String getAssetList() {
+       String s = new String(" ");
+       
+       for (Asset a : assetList) {
+           s = s + " " + a.getName();
+       }
+       
+       return s;
    }
    
-   /**
-    * setUserName - sets userName variable
-    * @param userName
-    */
-   public void setUserName(String userName) {
-	   this.userName = userName;
+   public int getStartYear() {
+       return startTime.get(Calendar.YEAR);
    }
    
-   /**
-    * getUserName - retreves userName
-    * @return UserName variable
-    */
-   public String getUserName() {
-	   return userName;
+   public int getEndYear() {
+       return endTime.get(Calendar.YEAR);
    }
    
-   /**
-    * setUserID - sets userID variable
-    * @param userID
-    */
-   public void setUserID(int userID) {
-	   this.userID = userID;
+   public int getStartMonth() {
+       return startTime.get(Calendar.MONTH);
    }
    
-   /**
-    * getUserID - retreves UserID variable
-    * @return userID variable
-    */
-   public int getUserID() {
-	   return userID;
+   public int getEndMonth() {
+       return endTime.get(Calendar.MONTH);
+   }
+   
+   public int getStartDay() {
+       return startTime.get(Calendar.DAY_OF_MONTH);
+   }
+   
+   public int getEndDay() {
+       return endTime.get(Calendar.DAY_OF_MONTH);
+   }
+   
+   public int getReminder() {
+       return remind;
+   }
+   
+   public void setuserID(int i) {
+       this.userID = i;
    }
     
-    
+   public int getuserID() {
+       return userID;
+   }
+ 
+   
 }

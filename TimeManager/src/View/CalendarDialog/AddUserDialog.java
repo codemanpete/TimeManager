@@ -6,6 +6,7 @@
 package View.CalendarDialog;
 
 import java.awt.Frame;
+import User.*;
 
 /**
  *
@@ -115,7 +116,7 @@ public class AddUserDialog extends javax.swing.JDialog {
         user.setUserName(newUserNameBox.getText());
         String pass1 = new String(passwordBox1.getPassword());
         String pass2 = new String(passwordBox2.getPassword());
-        UserDB userDB = new UserDB("jdbc:sqlite:timemanager.db");
+        UserDB userDB = new UserDB("jdbc:sqlite:user.db");
         if (pass1.compareTo(pass2) == 0) {
             
             user.setPassword(pass2);

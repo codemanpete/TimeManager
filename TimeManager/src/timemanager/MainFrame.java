@@ -18,6 +18,9 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000,800);
         setVisible(true);
+        setDefaultLookAndFeelDecorated(true);
+        
+        
     }
     
 }
