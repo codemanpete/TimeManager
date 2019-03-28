@@ -41,7 +41,7 @@ public class UserDB implements DataReadWrite {
     public void initialize() {
         String sql = "CREATE TABLE IF NOT EXISTS user (\n"
                 + " id integer PRIMARY KEY, \n"
-                + " name text NOT NULL, \n"
+                + " uname text NOT NULL, \n"
                 + " password text NOT NULL\n"
                 + ");";
         
@@ -56,7 +56,7 @@ public class UserDB implements DataReadWrite {
     }
     
     public User getData(String userName) {
-        String sql = "SELECT id, name, password FROM user";
+        String sql = "SELECT id, uname, password FROM user";
         User user = new User();
         
         try (Connection conn = this.connect(); 
@@ -64,9 +64,9 @@ public class UserDB implements DataReadWrite {
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 
-                if (userName.compareTo(rs.getString("name")) == 0) {
+                if (userName.compareTo(rs.getString("uname")) == 0) {
                     
-                    user.setUserName(rs.getString("name"));
+                    user.setUserName(rs.getString("uname"));
                     user.setPassword(rs.getString("password"));
                     user.setIdNumber(Integer.parseInt(rs.getString("id"))); 
                     rs.close();
@@ -82,7 +82,7 @@ public class UserDB implements DataReadWrite {
     
     public void setData(User user) {
         if (!checkDuplicate(user.getUserName())){
-             String sql = "INSERT INTO user (name, password) VALUES(?,?)";
+             String sql = "INSERT INTO user (uname, password) VALUES(?,?)";
         //System.out.println(sql);
             try (Connection conn = this.connect(); 
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -99,7 +99,7 @@ public class UserDB implements DataReadWrite {
     }
     
     private boolean checkDuplicate(String userName) {
-        String sql = "SELECT name FROM user";
+        String sql = "SELECT uname FROM user";
         
         
         try (Connection conn = this.connect(); 
@@ -107,7 +107,7 @@ public class UserDB implements DataReadWrite {
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 
-                if (userName.compareTo(rs.getString("name")) == 0) {
+                if (userName.compareTo(rs.getString("uname")) == 0) {
                     
                     return true;
                 }  

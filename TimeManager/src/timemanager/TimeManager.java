@@ -19,11 +19,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import User.*;
+import Appointment.*;
 
 
 public class TimeManager {
 
     public static void main(String[] args) {
+        String url = new String("jdbc:sqlite:user.db");
         
         try {
             UserClass test = new UserClass();
@@ -36,7 +39,12 @@ public class TimeManager {
             Logger.getLogger(UserClass.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        LoginFrame loginframe = new LoginFrame();
+       AppointmentDB adb = new AppointmentDB(url);
+       adb.initialize();
+       LoginFrame loginframe = new LoginFrame();
+      
+       
+       
     }
     
 }
