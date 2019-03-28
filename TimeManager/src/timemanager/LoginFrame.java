@@ -15,10 +15,11 @@ public class LoginFrame extends JFrame implements ActionListener {
     JTextField textfield_username;
     JButton button_login, button_createUser;
     JPasswordField passwordfield;
+    JFrame frame;
 
     public LoginFrame() {
         // set the new window frame
-        JFrame frame = new JFrame("Login Form");
+        frame = new JFrame("Login Form");
         // create some objects
         label_login = new JLabel("Login Form");
         label_login.setForeground(Color.blue);
@@ -63,7 +64,11 @@ public class LoginFrame extends JFrame implements ActionListener {
             UserClass test = new UserClass();
             boolean loginMatch = test.checkUserPW(uname,pass);
             if(loginMatch == true){
-                MainFrame mainframe = new MainFrame();
+               // MainFrame mainframe = new MainFrame();
+                User.User mainuser = new User.User(uname, pass);
+                frame.dispose();
+                View.CalendarView.MainFrame frame = new View.CalendarView.MainFrame(mainuser);
+                
             }
             else{
                 JOptionPane.showMessageDialog(this,"Incorrect login or password",

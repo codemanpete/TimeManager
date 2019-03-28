@@ -45,14 +45,14 @@ public class UserClass {
                 System.out.println("Check: Building Table");
                 Statement state2 = con.createStatement();
                 state2.execute("CREATE TABLE user(id integer, uname varchar(60), password varchar(60), primary key(id));");
-                PreparedStatement prep = con.prepareStatement("INSERT INTO user values (?,?,?);");
-                prep.setString(2,"Admin");
-                prep.setString(3,"123");
+                PreparedStatement prep = con.prepareStatement("INSERT INTO user (uname, password) values (?,?);");
+                prep.setString(1,"Admin");
+                prep.setString(2,"123");
                 prep.execute();
                 
-                PreparedStatement prep2 = con.prepareStatement("INSERT INTO user values (?,?,?);");
-                prep2.setString(2,"Brendan");
-                prep2.setString(3,"123");
+                PreparedStatement prep2 = con.prepareStatement("INSERT INTO user (uname, password) values (?,?);");
+                prep2.setString(1,"Brendan");
+                prep2.setString(2,"123");
                 prep2.execute();
             }
             else{
@@ -86,9 +86,9 @@ public class UserClass {
                 "Error",JOptionPane.ERROR_MESSAGE); 
             }
             else{ // userName is not in user.db
-                PreparedStatement prep = con.prepareStatement("INSERT INTO user values(?,?,?);");
-                prep.setString(2, userName);
-                prep.setString(3, password);
+                PreparedStatement prep = con.prepareStatement("INSERT INTO user (uname, password) values(?,?);");
+                prep.setString(1, userName);
+                prep.setString(2, password);
                 prep.execute();
                 JOptionPane.showMessageDialog(null,"New User Created",
                 "Try Logging In",JOptionPane.PLAIN_MESSAGE);
@@ -128,13 +128,18 @@ public class UserClass {
             }
             if(count == 1){
                 result = true;
+                
             }
             else{
                 result = false;
             }
+            rs.close();
+            pst.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(UserClass.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return result;
     }    
 }
