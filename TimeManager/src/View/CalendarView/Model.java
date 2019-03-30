@@ -22,6 +22,7 @@ public class Model {
                              "Thursday", "Friday", "Saturday"};
     
     private Calendar firstDayofMonth;
+    private Calendar current;
     
     int[] DAYS_IN_MONTH = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     private User user;
@@ -30,6 +31,7 @@ public class Model {
     public Model(User user) {
         this.user = user;
         today = Calendar.getInstance();
+        current = Calendar.getInstance();
         firstDayofMonth = Calendar.getInstance();
         firstDayofMonth.set(Calendar.DAY_OF_MONTH, 1);
                 
@@ -38,6 +40,7 @@ public class Model {
     public Model(int month) {
         this.month = month;
         today = Calendar.getInstance();
+        current = Calendar.getInstance();
         today.set(Calendar.MONTH, month);
         firstDayofMonth = today;
         firstDayofMonth.set(Calendar.DAY_OF_MONTH, 1);
@@ -61,6 +64,7 @@ public class Model {
     }
     
     public int getToday() {
+        
         return today.get(Calendar.DAY_OF_MONTH);
     }
     
@@ -89,6 +93,10 @@ public class Model {
     
     public ArrayList getAppointments(int day) {
         return user.getAppointments(today.get(Calendar.YEAR), today.get(Calendar.MONTH), day);
+    }
+    
+    public Calendar getCurrent() {
+        return current;
     }
 
     
