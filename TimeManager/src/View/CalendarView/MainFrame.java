@@ -54,7 +54,7 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add Appointment");
-                AddAppointmentDialog apptDialog = new AddAppointmentDialog(frame, true, user);
+                AddAppointmentDialog apptDialog = new AddAppointmentDialog(frame, true, user, main);
                 apptDialog.setLocationRelativeTo(frame);
                 apptDialog.setVisible(true);
             }
