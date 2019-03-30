@@ -18,6 +18,7 @@ public class MonthView extends JPanel {
    private Calendar today = Calendar.getInstance();
    int month;
    Model model;
+   int td;
   
    
    
@@ -76,7 +77,16 @@ public class MonthView extends JPanel {
        // firstDay.set(Calendar.DAY_OF_MONTH, 1);
         
         //int td = today.get(Calendar.DAY_OF_MONTH);
-        int td = model.getToday();
+        
+        
+        if (model.getCurrent().get(Calendar.YEAR) == model.getYear() && 
+                model.getCurrent().get(Calendar.MONTH) == model.getMonth()) {
+            td = model.getCurrent().get(Calendar.DAY_OF_MONTH);
+        }
+        else {
+            td = 0;
+        }
+        
         
         //System.out.println(td);
       
