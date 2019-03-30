@@ -9,6 +9,8 @@ import java.awt.Frame;
 import javax.swing.JFrame;
 import Appointment.*;
 import User.*;
+import View.CalendarView.MainPanel;
+import javax.swing.JPanel;
 //import 
 
 /**
@@ -33,14 +35,16 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         int apptReminder = 00;
         User user;
         Frame frame;
+        MainPanel main;
 
     /**
      * Creates new form AddAppointmentDialog
      */
-    public AddAppointmentDialog(java.awt.Frame parent, boolean modal, User user) {
+    public AddAppointmentDialog(java.awt.Frame parent, boolean modal, User user, MainPanel main) {
         super(parent, modal);
         this.user = user;
         this.frame = parent;
+        this.main = main;
         initComponents();
     }
 
@@ -243,8 +247,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         diag.setLocationRelativeTo(frame);
         diag.setVisible(true);
         
-        frame.revalidate();
-        frame.repaint();
+        main.paintComponent();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
