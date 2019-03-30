@@ -62,5 +62,11 @@ public class MainPanel extends JPanel {
       repaint();
     }
     
+    public void paintComponent() {
+        removeAll();
+        add(calPanel = new MonthView(model));
+        revalidate();
+        repaint();
+    }
     
 }
