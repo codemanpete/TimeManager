@@ -107,7 +107,7 @@ public class AppointmentDB implements DataReadWrite {
                java.util.Date enddate = new java.util.Date(sqlenddate.getTime());
                
                Appointment temp = new Appointment(rs.getString("apptname"));
-               System.out.println(rs.getString("username"));
+              // System.out.println(rs.getString("username"));
                temp.setUserName(rs.getString("username"));
                temp.setApptName(rs.getString("apptname"));
                temp.setLocation(rs.getString("location"));
