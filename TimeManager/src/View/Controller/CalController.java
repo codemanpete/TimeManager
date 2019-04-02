@@ -28,8 +28,8 @@ public class CalController extends JPanel {
         monthOrWeek = true;
         //JPanel controller = new JPanel(true);
         //this.setLayout(new GridLayout(2, 2));
-        this.setLayout(new FlowLayout());
-        //this.setLayout(new BorderLayout());
+        //this.setLayout(new FlowLayout);
+        this.setLayout(new BorderLayout());
         
         
         
@@ -103,9 +103,9 @@ public class CalController extends JPanel {
         });
         }
         removeAll();
-        add(prevMonth);
-        add(monthSwitch);
-        add(nextMonth);
+        add(prevMonth, BorderLayout.WEST);
+        add(monthSwitch, BorderLayout.CENTER);
+        add(nextMonth, BorderLayout.EAST);
         revalidate();
         repaint();
       
