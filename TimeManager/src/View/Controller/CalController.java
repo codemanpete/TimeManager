@@ -16,32 +16,26 @@ import View.CalendarView.*;
 public class CalController extends JPanel {
     private MainPanel panel;
     private Model model;
+    boolean monthOrWeek;
+    private JButton monthSwitch;
+    private JButton prevMonth;
+    private JButton nextMonth;
+    
     
     public CalController(MainPanel panel, Model model) {
         this.panel = panel;
         this.model = model;
+        monthOrWeek = true;
         //JPanel controller = new JPanel(true);
-        this.setLayout(new GridLayout(2, 2));
+        //this.setLayout(new GridLayout(2, 2));
+        this.setLayout(new FlowLayout());
         //this.setLayout(new BorderLayout());
-        JButton weekSwitch = new JButton();
-        weekSwitch.setText("Week");
-        weekSwitch.addActionListener(new ActionListener() { 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.changeWeek();
-            }
-        });
         
-        JButton monthSwitch = new JButton();
-        monthSwitch.setText("Month");
-        monthSwitch.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.changeMonth();
-            }
-        });
         
-        JButton nextMonth = new JButton();
+        
+        
+        
+        nextMonth = new JButton();
         nextMonth.setText("Next");
         nextMonth.addActionListener(new ActionListener() {
             @Override
@@ -53,7 +47,8 @@ public class CalController extends JPanel {
             }
         });
         
-        JButton prevMonth = new JButton();
+        
+        prevMonth = new JButton();
         prevMonth.setText("Prev");
         prevMonth.addActionListener(new ActionListener() {
             @Override
@@ -64,17 +59,56 @@ public class CalController extends JPanel {
                 panel.nextMonth();
             }
         });
-        
-        add(weekSwitch);
-        add(monthSwitch);
-        add(prevMonth);
-        add(nextMonth);
+        buttonInit();
+        //add(prevMonth);
+        //add(weekSwitch);
+        //add(monthSwitch);
+        //add(nextMonth);
         
         
         setVisible(true);
         
         
         
+    }
+    
+    
+    
+    private void buttonInit() {
+        //remove(monthSwitch);
+        if (monthOrWeek) {
+        monthSwitch = new JButton();    
+        monthSwitch.setText("Week");
+        monthSwitch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.changeWeek();
+                monthOrWeek = false;
+                buttonInit();
+                
+            }
+        });
+        }
+        else {
+        monthSwitch = new JButton();
+        monthSwitch.setText("Month");
+        monthSwitch.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.changeMonth();
+                monthOrWeek = true;
+                buttonInit();
+                
+            }
+        });
+        }
+        removeAll();
+        add(prevMonth);
+        add(monthSwitch);
+        add(nextMonth);
+        revalidate();
+        repaint();
+      
     }
     
 }
