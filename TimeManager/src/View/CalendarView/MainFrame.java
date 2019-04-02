@@ -35,7 +35,7 @@ public class MainFrame extends JFrame {
         model = new Model(user);
         this.main = new MainPanel(model, user);
        
-        
+        JFrame frame = new JFrame();
         control = new CalController(main, model);
         //wpanel.setVisible(false);
         //mpanel.setVisible(true);
@@ -45,7 +45,7 @@ public class MainFrame extends JFrame {
         
         
         //weekview panel = new weekview();
-        JFrame frame = new JFrame();
+        
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("File");
         JMenuItem addAppt = new JMenuItem("Add Appointment");
@@ -77,7 +77,7 @@ public class MainFrame extends JFrame {
         frame.setSize(500, 500);
         frame.setLayout(new BorderLayout());
         frame.setJMenuBar(menuBar);
-        frame.add(control, BorderLayout.WEST);
+        frame.add(control, BorderLayout.NORTH);
         //frame.add(panel2, BorderLayout.WEST);
         //main.add(mpanel, BorderLayout.CENTER);
         frame.add(main);
@@ -99,6 +99,8 @@ public class MainFrame extends JFrame {
         //this.add(mpanel, BorderLayout.CENTER);
         this.repaint();
     }
+    
+    
     
     public void actionPerformed(ActionEvent e) {
         
