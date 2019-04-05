@@ -5,11 +5,14 @@
 *    Calendar
 *    Business Meetings
 *    
+*    Appointment Class - Defines appointment object
+*    
 *Members:
 *    Sean Curtis
 *    Peter Cheng
 *    Brendan Walker
- */
+*    Charles McEniry
+*/
 package Appointment;
 import java.util.*;
 import static java.util.Calendar.DAY_OF_MONTH;
