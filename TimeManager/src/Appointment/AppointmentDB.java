@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    AppointmentDB Class - SQL driver for Appointment objects
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package Appointment;
 
 import java.sql.Connection;
@@ -15,20 +25,26 @@ import java.util.ArrayList;
 import timemanager.*;
 /**
  *
- * @author Sean
+ * @author Sean J Curtis
  */
 public class AppointmentDB implements DataReadWrite {
 //public class AppointmentDB  {
     private String url;
     private Connection conn;
     
-    
+    /**
+     * Constructor
+     * @param url String for the SQL DB url 
+     */
     public AppointmentDB(String url) {
         
         this.url = url;
         
     }
-    
+    /**
+     * connect - creates a connection to the sqlite database
+     * @return Connection object
+     */
     private Connection connect() {
         // SQLite connection string
         //String url = "jdbc:sqlite:test.db";
@@ -40,7 +56,9 @@ public class AppointmentDB implements DataReadWrite {
         }
         return conn;
     }
-    
+    /**
+     * initialize - creates the Appointment table in the sqlite database
+     */
     public void initialize() {
         String sql = "CREATE TABLE IF NOT EXISTS Appointment (\n"
                 + " id integer PRIMARY KEY, \n"
@@ -61,7 +79,10 @@ public class AppointmentDB implements DataReadWrite {
         }
         
     }
-    
+    /**
+     * setData - adds an appointment field to the database
+     * @param appt Appointment object
+     */
     public void setData(Appointment appt) {
         if (!checkDuplicates(appt.getUserName(), appt.getApptName())) {
         String sql = "INSERT INTO Appointment (username, userid, apptname, startdate, enddate, reminder, location) VALUES(?,?,?,?,?,?,?)";
@@ -90,7 +111,11 @@ public class AppointmentDB implements DataReadWrite {
         }
         }
     }
-    
+    /**
+     * getData - reads database and creates arraylist of appointment objects
+     * @param userName User to search for
+     * @return ArrayList of Appointment objects
+     */
     public ArrayList getData(String userName) {
         
         String sql = "SELECT id, username, apptname, startdate, enddate, reminder, location FROM Appointment "
@@ -132,7 +157,12 @@ public class AppointmentDB implements DataReadWrite {
         return appts;
         
     }
-    
+    /**
+     * checkDuplicates - checks database for duplicate entries
+     * @param apptname - appointment name
+     * @param userName - username
+     * @return true or false
+     */
     private boolean checkDuplicates(String apptname, String userName) {
         String sql = "SELECT username, apptname FROM Appointment";
         
