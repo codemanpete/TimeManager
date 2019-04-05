@@ -1,8 +1,18 @@
 /**
- * DateOutOfRangeException - for Appointment class
- * for Time Manager Class Project
- * for CS321-02
- */
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    DateOutOfRangeException
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package Appointment;
 
 /**
