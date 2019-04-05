@@ -1,7 +1,14 @@
 /**
- * Appointment Class, for Time Manager class project
- * CS321-02
- * 
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
  */
 package Appointment;
 import java.util.*;
@@ -57,11 +64,17 @@ public class Appointment implements Comparable<Appointment> {
     public String getApptName() {
         return apptName;
     }
-    
+    /**
+     * setUserName - sets UserName in appointment object
+     * @param userName String for userName
+     */
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    
+    /**
+     * getUserName - returns this appointment objects userName
+     * @return string for username
+     */
     public String getUserName() {
         return this.userName;
     }
@@ -241,38 +254,69 @@ public class Appointment implements Comparable<Appointment> {
        return s;
    }
    
+   /**
+    * getStartYear - returns the start time year
+    * @return int for the start year
+    */
    public int getStartYear() {
        return startTime.get(Calendar.YEAR);
    }
    
+   /**
+    * getEndYear - returns the end time year
+    * @return int for the end year
+    */
    public int getEndYear() {
        return endTime.get(Calendar.YEAR);
    }
-   
+   /**
+    * getStartMonth - returns the start time month
+    * @return int for the start month
+    */
    public int getStartMonth() {
        return startTime.get(Calendar.MONTH);
    }
-   
+   /**
+    * getEndMonth - returns the end time month
+    * @return int for the end month
+    */
    public int getEndMonth() {
        return endTime.get(Calendar.MONTH);
    }
-   
+   /**
+    * getStartDay - returns the start time day
+    * @return int for start day
+    */
    public int getStartDay() {
        return startTime.get(Calendar.DAY_OF_MONTH);
    }
-   
+   /**
+    * getEndDay - returns the end time day
+    * @return int for the end day
+    */
    public int getEndDay() {
        return endTime.get(Calendar.DAY_OF_MONTH);
    }
-   
+   /**
+    * getReminder - returns the remind time
+    * @return int for the remind time
+    */
    public int getReminder() {
        return remind;
    }
-   
+   /**
+    * setuserID - sets the userID for this appointment
+    * @param i int for the user ID
+    */
    public void setuserID(int i) {
        this.userID = i;
    }
-    
+    /**
+     * getuserID - returns userID for this appointment
+     * 
+     * 
+     * @return int userID
+     */
    public int getuserID() {
        return userID;
    }
