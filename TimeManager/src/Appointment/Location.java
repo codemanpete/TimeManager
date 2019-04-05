@@ -1,8 +1,18 @@
 /**
- * Location Class
- * For CS321-02 Group Project
- * Time Manager
- */
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    Location Class - Defines Location object
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package Appointment;
 
 /**
