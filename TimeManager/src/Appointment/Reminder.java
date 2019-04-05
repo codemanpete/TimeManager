@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    Reminder class - Defines reminder object
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package Appointment;
 
 import java.util.Calendar;
@@ -10,7 +20,7 @@ import java.util.Date;
 
 /**
  *
- * @author Sean
+ * @author Sean J Curtis
  */
 
     public class Reminder {
@@ -20,7 +30,15 @@ import java.util.Date;
     // This is the time you want to set the reminder for.
     private Calendar settime;
     
-    // Constructor sets the set time.
+    /**
+     * Parameterized Constructor
+     * @param year int year
+     * @param month int month
+     * @param day int day
+     * @param hour int hour
+     * @param minute int minute
+     * @param second  int second
+     */
     public Reminder(int year, int month, int day, int hour, int minute, int second) {
         
         curtime = Calendar.getInstance();
@@ -29,8 +47,10 @@ import java.util.Date;
         
     }
     
-    // Really simple check function, returns true if the current time matches
-    // the time set by the constructor
+    /**
+     * timeCheck - checks to see if the reminder time matches the current time
+     * @return boolean if time is matched or not
+     */
     public boolean timeCheck() {
         
         curtime = Calendar.getInstance();
@@ -49,7 +69,10 @@ import java.util.Date;
             return false;
         }
     }
-    // Prints both time values, useful for debugging
+    /**
+     * returns both current time and remind time
+     * @return String of both times
+     */
     public String returnTime() {
         Date cur;
         
