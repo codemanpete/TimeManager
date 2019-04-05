@@ -1,6 +1,18 @@
-/*
- * Asset Class for CS321-02 Group Project
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    Asset Class - Defines Asset object
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package Appointment;
 
 /**
