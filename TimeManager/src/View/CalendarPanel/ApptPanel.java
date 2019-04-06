@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    ApptPanel class - Creates a panel to display appointments
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package View.CalendarPanel;
 import java.awt.*;
 import javax.swing.*;
@@ -14,13 +24,19 @@ import Appointment.*;
  */
 public class ApptPanel extends JPanel{
     private Appointment appt;
-    
+    /**
+     * Default Constructor
+     * @param appt Appointment object
+     */
     public ApptPanel(Appointment appt) {
         this.appt = appt;
         this.add(makePanel());
     }
     
-    
+    /**
+     * makePanel - creates the panel
+     * @return a Jpanel
+     */
     private JPanel makePanel() {
         JPanel panel = new JPanel(true);
         panel.setLayout(new FlowLayout());
