@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    CalController class - controls the main panel
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package View.Controller;
 import java.awt.*;
 import javax.swing.*;
@@ -21,7 +31,11 @@ public class CalController extends JPanel {
     private JButton prevMonth;
     private JButton nextMonth;
     
-    
+    /**
+     * Default Constructor
+     * @param panel MainPanel object
+     * @param model Model object
+     */
     public CalController(MainPanel panel, Model model) {
         this.panel = panel;
         this.model = model;
@@ -73,7 +87,9 @@ public class CalController extends JPanel {
     }
     
     
-    
+    /**
+     * buttonInit - creates the buttons dynamically
+     */
     private void buttonInit() {
         //remove(monthSwitch);
         if (monthOrWeek) {
