@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    AddAppointmentDialog class - Creates add appointment dialog box
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package View.CalendarDialog;
 
 import java.awt.Frame;
@@ -228,7 +238,10 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * jButton1ActionPerformed - event handler for button1
+ * @param evt 
+ */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Appointment appt = new Appointment(nameBox.getText());
@@ -250,11 +263,17 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         main.paintComponent();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+/**
+ * jButton2ActionPerformed - event handler for button2
+ * @param evt 
+ */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+/**
+ * startYearActionPerformed - sets Start Year
+ * @param evt 
+ */
     private void startYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startYearActionPerformed
                 // TODO add your handling code here:
         String s = new String();
@@ -262,7 +281,10 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         this.apptStartYear = Integer.parseInt(s);
         //System.out.println(apptStartYear);
     }//GEN-LAST:event_startYearActionPerformed
-
+/**
+ * startMonthActionPerformed - sets start month
+ * @param evt 
+ */
     private void startMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startMonthActionPerformed
         // TODO add your handling code here:
         String s = new String();
@@ -307,35 +329,50 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
        // System.out.println(" " + apptStartMonth);
         
     }//GEN-LAST:event_startMonthActionPerformed
-
+/**
+ * startDayActionPerformed - sets start day
+ * @param evt 
+ */
     private void startDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startDayActionPerformed
         // TODO add your handling code here:
         String s = new String();
         s = (String) startDay.getSelectedItem();
         this.apptStartDay = Integer.parseInt(s);
     }//GEN-LAST:event_startDayActionPerformed
-
+/**
+ * startHourActionPerformed - sets start hour
+ * @param evt 
+ */
     private void startHourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startHourActionPerformed
         // TODO add your handling code here:
         String s = new String();
         s = (String) startHour.getSelectedItem();
         this.apptStartHour = Integer.parseInt(s);
     }//GEN-LAST:event_startHourActionPerformed
-
+/**
+ * startMinActionPerformed - sets start min
+ * @param evt 
+ */
     private void startMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startMinActionPerformed
         // TODO add your handling code here:
         String s = new String();
         s = (String) startMin.getSelectedItem();
         this.apptStartMin = Integer.parseInt(s);
     }//GEN-LAST:event_startMinActionPerformed
-
+/**
+ * endYearActionPerformed - sets end year
+ * @param evt 
+ */
     private void endYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endYearActionPerformed
         // TODO add your handling code here:
         String s = new String();
         s = (String) endYear.getSelectedItem();
         this.apptEndYear = Integer.parseInt(s);
     }//GEN-LAST:event_endYearActionPerformed
-
+/**
+ * endMonthActionPerformed - sets end month
+ * @param evt 
+ */
     private void endMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endMonthActionPerformed
         // TODO add your handling code here:
         String s = new String();
@@ -377,28 +414,40 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
             this.apptEndMonth = 11;
         }
     }//GEN-LAST:event_endMonthActionPerformed
-
+/**
+ * endDayActionPerformed - sets end day
+ * @param evt 
+ */
     private void endDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endDayActionPerformed
         // TODO add your handling code here:
         String s = new String();
         s = (String) endDay.getSelectedItem();
         this.apptEndDay = Integer.parseInt(s);
     }//GEN-LAST:event_endDayActionPerformed
-
+/**
+ * endHourActionPerformed - sets end Hour
+ * @param evt 
+ */
     private void endHourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endHourActionPerformed
         // TODO add your handling code here:
         String s = new String();
         s = (String) endHour.getSelectedItem();
         this.apptEndHour = Integer.parseInt(s);
     }//GEN-LAST:event_endHourActionPerformed
-
+/**
+ * endMinuteActionPerformed - sets end min
+ * @param evt 
+ */
     private void endMinuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endMinuteActionPerformed
         // TODO add your handling code here:
         String s = new String();
         s = (String) endMinute.getSelectedItem();
         this.apptEndMin = Integer.parseInt(s);
     }//GEN-LAST:event_endMinuteActionPerformed
-
+/**
+ * reminderMenuActionPerformed - sets remind time
+ * @param evt 
+ */
     private void reminderMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reminderMenuActionPerformed
         // TODO add your handling code here:
         String s = new String();
