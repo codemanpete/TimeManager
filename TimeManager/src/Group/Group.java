@@ -1,8 +1,18 @@
 /**
- * Group class. For Group management
- * For CS321-02 Group Project
- * Walker, Cheng, Curtis, McEniry
- */
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    Group class - Defines Group object
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package Group;
 import java.util.ArrayList;
 
