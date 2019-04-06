@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*   NewDayWindowPopUp class - Creates A Day Window Pop Up Window
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package View.CalendarDialog;
 import java.awt.*;
 import javax.swing.*;
@@ -27,7 +37,9 @@ public class NewDayWindowPopUp extends JDialog {
         this.label = label;
         initComponents();
     }
-    
+    /**
+     * initComponents - draws components 
+     */
     public void initComponents() {
         
         JLabel dayLabel = new javax.swing.JLabel();
