@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    WeekView - creates a week view calendar
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package View.CalendarView;
 
 import java.awt.BorderLayout;
@@ -24,12 +34,18 @@ public class WeekView extends JPanel {
     private String[] WEEKDAYS = {"Sunday", "Monday", "Tuesday", "Wednesday",
                              "Thursday", "Friday", "Saturday"};
     Model model;
-    
+/**
+ * Default Constructor
+ * @param model Model object
+ */    
         public WeekView(Model model) {
         this.model = model;
         this.add(makePanel());
     }
-    
+    /**
+     * makePanel - creates the main panel
+     * @return JPanel for the week view
+     */
     public JPanel makePanel() {
         JPanel panel = new JPanel(true);
         panel.setLayout(new BorderLayout());
@@ -39,7 +55,10 @@ public class WeekView extends JPanel {
         panel.add(makeCalendarPanel(), BorderLayout.CENTER);
         return panel;
     }
-    
+    /**
+     * makeTopPanel - creates the top label panel
+     * @return JPanel for the top panel
+     */
     private JPanel makeTopPanel() {
         JPanel panel = new JPanel(true);
         panel.setBorder(BorderFactory.createBevelBorder(1));
@@ -51,7 +70,10 @@ public class WeekView extends JPanel {
         
         return panel;
     }
-    
+    /**
+     * makeCalendarPanel - creates the calendar panel
+     * @return a JPanel for the calendar
+     */
     private JPanel makeCalendarPanel() {
         JPanel panel = new JPanel(true);
         panel.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -66,7 +88,7 @@ public class WeekView extends JPanel {
             JPanel dayPanels = new JPanel(true);
             dayPanels.setBorder(BorderFactory.createLineBorder(Color.black));
             dayPanels.setPreferredSize(new Dimension(175, 600));
-           // JLabel labels = new JLabel(WEEKDAYS[i-1]);
+           
            
             if (i == td - 1) {
                 labels.setForeground(Color.red);
@@ -75,15 +97,7 @@ public class WeekView extends JPanel {
             dayPanels.add(labels, BorderLayout.NORTH);
             panel.add(dayPanels);
         }
-        /*
-        for (int i = 1; i < 8; i++) {
-            JPanel panels = new JPanel(true);
-            panels.setBorder(BorderFactory.createLineBorder(Color.black));
-            panels.setPreferredSize(new Dimension(175, 500));
-            JLabel labels = new JLabel(" " + i);
-            panels.add(labels, BorderLayout.NORTH);
-            panel.add(panels);
-        }*/
+        
         return panel;
     }
     
