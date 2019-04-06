@@ -1,3 +1,18 @@
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    UserClass class - Defines UserClass Object and initializes database
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package User;
 
 import java.sql.*;
@@ -5,11 +20,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static jdk.nashorn.internal.objects.NativeRegExp.test;
-
+/**
+ * 
+ * @author Brendan Walker
+ */
 public class UserClass {
     private static Connection con;
     private static boolean hasData = false;
     // Display Usernames and Passwords
+    /**
+     * displayUsers - displays users currently in database
+     * @return ResultSet object of users
+     * @throws SQLException 
+     */
     public ResultSet displayUsers() throws SQLException{
         // Check Connection
         if(con == null){
@@ -24,6 +47,11 @@ public class UserClass {
         return res;
     }
     // Get a Connection to the user.db SQLite Database
+    /**
+     * getConnection - gets database connection
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     private void getConnection() throws ClassNotFoundException, SQLException {
         // Please NOTE: This is absolutely CRITICAL
         // Must add sqlite-jdbc-3.8.6 to the library
@@ -35,6 +63,10 @@ public class UserClass {
         initialize();
     }
     // Create a database if there is none
+    /**
+     * initialize - creates user table in database
+     * @throws SQLException 
+     */
     private void initialize() throws SQLException {
         System.out.println("initializing...");
         if(!hasData){
@@ -61,6 +93,11 @@ public class UserClass {
         }
     }
     // Add a User with unique Username and Password
+    /**
+     * addUser - adds user to database
+     * @param userName String of username
+     * @param password String of password
+     */
     public void addUser(String userName, String password){
         try {
             if(con==null){ // Establish a Connection to user.db
@@ -105,6 +142,12 @@ public class UserClass {
         }
     }
     // Verify User's username and password
+    /**
+     * checkUserPW - checks user username and password
+     * @param userName String of username
+     * @param password String of password
+     * @return boolean true if password match
+     */
     public boolean checkUserPW(String userName, String password){
         boolean result = false;
         try {
