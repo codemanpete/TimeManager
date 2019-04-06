@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    NewDayPanel class - Creates day panels for the calendar
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package View.CalendarPanel;
 import java.awt.*;
 import javax.swing.*;
@@ -22,7 +32,11 @@ public class NewDayPanel extends JPanel{
         JFrame topFrame;
         ArrayList<Appointment> todaysAppts = new ArrayList();
         
-        
+        /**
+         * NewDayPanel default constructor
+         * @param label day label
+         * @param model CalendarLogic class
+         */
         public NewDayPanel(JLabel label, Model model) {
         this.model = model;
         this.label = label;
@@ -32,7 +46,9 @@ public class NewDayPanel extends JPanel{
         initComponents();
         //addApptPanels();
     }
-        
+        /**
+         * initComponenets - create the panel
+         */
     private void initComponents() {
 
         JLabel dayLabel = new javax.swing.JLabel();
@@ -67,7 +83,10 @@ public class NewDayPanel extends JPanel{
         
 		
     }                       
-
+/**
+ * formMouseClicked - allows day panels to be clicked on
+ * @param evt 
+ */
     private void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
         // TODO add your handling code here:
        // System.out.println(label.getText());
@@ -75,7 +94,10 @@ public class NewDayPanel extends JPanel{
         pop.setLocationRelativeTo(topFrame);
         pop.setVisible(true);
     }
-    
+    /**
+     * getTodaysAppts - gets the appts from the User arraylist
+     * @param label 
+     */
     private void getTodaysAppts(JLabel label) {
        //System.out.println(label.getText());
         String today = label.getText();
