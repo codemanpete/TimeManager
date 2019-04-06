@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    UserDB class - Defines UserDB database object
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package User;
 
 import java.sql.Connection;
@@ -21,11 +31,17 @@ public class UserDB implements DataReadWrite {
     
     private String url;
     private Connection conn;
-    
+    /**
+     * Default Constructor
+     * @param url String location of database
+     */
     public UserDB(String url) {
         this.url = url;
     }
-    
+    /**
+     * connect - gets database connection
+     * @return database connection object
+     */
     private Connection connect() {
         // SQLite connection string
         //String url = "jdbc:sqlite:test.db";
@@ -37,7 +53,9 @@ public class UserDB implements DataReadWrite {
         }
         return conn;
     }
-    
+    /**
+     * initialize - creates user table if it doesn't exist
+     */
     public void initialize() {
         String sql = "CREATE TABLE IF NOT EXISTS user (\n"
                 + " id integer PRIMARY KEY, \n"
@@ -54,7 +72,11 @@ public class UserDB implements DataReadWrite {
         }
         
     }
-    
+    /**
+     * getData - returns User object from database
+     * @param userName String username
+     * @return User object
+     */
     public User getData(String userName) {
         String sql = "SELECT id, uname, password FROM user";
         User user = new User();
@@ -79,7 +101,10 @@ public class UserDB implements DataReadWrite {
         
         return user;
     }
-    
+    /**
+     * setData - adds User object to database
+     * @param user User object
+     */
     public void setData(User user) {
         if (!checkDuplicate(user.getUserName())){
              String sql = "INSERT INTO user (uname, password) VALUES(?,?)";
@@ -97,7 +122,11 @@ public class UserDB implements DataReadWrite {
             }
         
     }
-    
+    /**
+     * checkDuplicate - checks if user is a duplicate
+     * @param userName String of username
+     * @return boolean if user is matched
+     */
     private boolean checkDuplicate(String userName) {
         String sql = "SELECT uname FROM user";
         
