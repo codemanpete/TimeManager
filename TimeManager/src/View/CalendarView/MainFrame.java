@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    MainFrame creates main GUI panel
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package View.CalendarView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -27,7 +37,10 @@ public class MainFrame extends JFrame {
     private CalController control;
     private User user;
     
-    
+    /**
+     * Default Constructor
+     * @param user User object
+     */
     public MainFrame(User user) {
         //this.mpanel = new MonthView();
         //this.wpanel = new WeekView();
@@ -86,14 +99,18 @@ public class MainFrame extends JFrame {
         frame.pack();
         frame.setVisible(true);
     }
-    
+    /**
+     * changeWeek - Switch to week calendar (Deprecated)
+     */
     public void changeWeek() {
         //calPanel = new WeekView();
         /*this.remove(mpanel);
         this.add(wpanel, BorderLayout.CENTER);
         this.repaint();*/
     }
-    
+    /**
+     * changeMonth - change to month calendar (Deprecated)
+     */
     public void changeMonth() {
         //this.remove(wpanel);
         //this.add(mpanel, BorderLayout.CENTER);
@@ -101,7 +118,10 @@ public class MainFrame extends JFrame {
     }
     
     
-    
+    /**
+     * actionPerformed
+     * @param e 
+     */
     public void actionPerformed(ActionEvent e) {
         
     }
