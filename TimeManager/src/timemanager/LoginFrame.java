@@ -1,3 +1,18 @@
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    LoginFrame class - creates login panel
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package timemanager;
 
 import User.UserClass;
@@ -9,14 +24,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
+/**
+ * 
+ * @author Brendan Walker
+ */
 public class LoginFrame extends JFrame implements ActionListener {
     JLabel label_login, label_username, label_password;
     JTextField textfield_username;
     JButton button_login, button_createUser;
     JPasswordField passwordfield;
     JFrame frame;
-
+/**
+ * Default Constructor
+ */
     public LoginFrame() {
         // set the new window frame
         frame = new JFrame("Login Form");
@@ -55,7 +75,10 @@ public class LoginFrame extends JFrame implements ActionListener {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
+/**
+ * actionPerformed - for buttons
+ * @param e 
+ */
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         if(e.getSource()==button_login){
