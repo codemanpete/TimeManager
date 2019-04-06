@@ -1,8 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+*    CS 321
+*    Team Project
+*    Time Manager/Scheduler
+*    Calendar
+*    Business Meetings
+*    
+*    AddUserDialog class - Creates add User dialog box
+*    
+*Members:
+*    Sean Curtis
+*    Peter Cheng
+*    Brendan Walker
+*    Charles McEniry
+*/
 package View.CalendarDialog;
 
 import java.awt.Frame;
@@ -96,17 +106,26 @@ public class AddUserDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * newFirstNameBoxActionPerformed - sets first name
+ * @param evt 
+ */
     private void newFirstNameBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newFirstNameBoxActionPerformed
         // TODO add your handling code here:
        
     }//GEN-LAST:event_newFirstNameBoxActionPerformed
-
+/**
+ * cancelButtonActionPerformed - Closes the window
+ * @param evt 
+ */
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
-
+/**
+ * addUserButtonActionPerformed - Adds user
+ * @param evt 
+ */
     private void addUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserButtonActionPerformed
         // TODO add your handling code here:
         User user = new User();
