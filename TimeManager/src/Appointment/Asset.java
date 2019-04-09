@@ -4,7 +4,7 @@
 *    Time Manager/Scheduler
 *    Calendar
 *    Business Meetings
-*    n
+*    
 *    Asset Class - Defines Asset object
 *    
 *Members:
