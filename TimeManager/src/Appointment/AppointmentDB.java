@@ -98,17 +98,16 @@ public class AppointmentDB implements DataReadWrite {
         java.sql.Date sqlEndDate = new java.sql.Date(javaEndDate.getTime());
         
         try (Connection conn = this.connect(); 
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, appt.getUserName());
-            pstmt.setInt(2, appt.getuserID());
-            pstmt.setString(3, appt.getApptName());
-            pstmt.setDate(4, sqlStartDate);
-            pstmt.setDate(5, sqlEndDate);
-            pstmt.setInt(6, appt.getReminder());
-            pstmt.setString(7, appt.getLocation());
-            pstmt.executeUpdate();
-            pstmt.close();
-            conn.close();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, appt.getUserName());
+                pstmt.setInt(2, appt.getuserID());
+                pstmt.setString(3, appt.getApptName());
+                pstmt.setDate(4, sqlStartDate);
+                pstmt.setDate(5, sqlEndDate);
+                pstmt.setInt(6, appt.getReminder());
+                pstmt.setString(7, appt.getLocation());
+                pstmt.executeUpdate();
+                pstmt.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -128,7 +127,6 @@ public class AppointmentDB implements DataReadWrite {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);  
             while (rs.next()) {
-               // System.out.println(rs.getString("username"));
                java.sql.Date sqlstartdate = rs.getDate("startdate");
                java.sql.Date sqlenddate = rs.getDate("enddate");
                java.util.Date startdate = new java.util.Date(sqlstartdate.getTime());
@@ -150,9 +148,7 @@ public class AppointmentDB implements DataReadWrite {
                appts.add(temp);
                 
             }
-            rs.close();
-            conn.close();
-                
+            rs.close();           
         
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -181,7 +177,6 @@ public class AppointmentDB implements DataReadWrite {
                 }  
             }
             rs.close();
-            conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -190,26 +185,22 @@ public class AppointmentDB implements DataReadWrite {
     }
     
     private void seperate(Appointment appt) {
-        
-            appointments = new ArrayList<Appointment>();
-            Calendar start = appt.getStartTime();
-            Calendar end = appt.getEndTime();
-            for (int i = appt.getStartDay(); i <= appt.getEndDay(); i++) {
-                Appointment temp = new Appointment(appt.getApptName());
-                temp.setStartTime(start.get(Calendar.YEAR), 
-                                  start.get(Calendar.MONTH),
-                                  i,
-                                  start.get(Calendar.HOUR),
-                                  start.get(Calendar.MINUTE));
-                temp.setEndTime(end.get(Calendar.YEAR),
-                                end.get(Calendar.MONTH),
-                                i,
-                                end.get(Calendar.HOUR),
-                                end.get(Calendar.MINUTE));
-                appointments.add(temp);
-            }
-            
-        
-        
+        appointments = new ArrayList<Appointment>();
+        Calendar start = appt.getStartTime();
+        Calendar end = appt.getEndTime();
+        for (int i = appt.getStartDay(); i <= appt.getEndDay(); i++) {
+            Appointment temp = new Appointment(appt.getApptName());
+            temp.setStartTime(start.get(Calendar.YEAR), 
+                              start.get(Calendar.MONTH),
+                              i,
+                              start.get(Calendar.HOUR),
+                              start.get(Calendar.MINUTE));
+            temp.setEndTime(end.get(Calendar.YEAR),
+                            end.get(Calendar.MONTH),
+                            i,
+                            end.get(Calendar.HOUR),
+                            end.get(Calendar.MINUTE));
+            appointments.add(temp);
+        }
     }
 }

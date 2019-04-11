@@ -19,19 +19,20 @@ import javax.swing.*;
 import java.util.*;
 import Appointment.*;
 import View.CalendarPanel.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author Sean
  */
 public class NewDayWindowPopUp extends JDialog {
-    
-       JLabel label;
-        ArrayList<Appointment> appts;
+    JButton delButton, addApptButton;
+    JLabel label;
+    ArrayList<Appointment> appts;
     /**
      * Creates new form DayWindowPopUp
      */
-    public NewDayWindowPopUp(java.awt.Frame parent, boolean modal, JLabel label, ArrayList appts) {
-       
+    public NewDayWindowPopUp(java.awt.Frame parent, boolean modal, JLabel label, ArrayList appts) { 
         super(parent, modal);
         this.appts = appts;
         this.label = label;
@@ -41,38 +42,46 @@ public class NewDayWindowPopUp extends JDialog {
      * initComponents - draws components 
      */
     public void initComponents() {
-        
+        // General Layout is vertically oriented
+        getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+        // Add components to panels
         JLabel dayLabel = new javax.swing.JLabel();
-
-        
-        
-        //setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        setLayout(new FlowLayout());
-        
         dayLabel = label;
         JPanel topPanel = new JPanel(true);
         topPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        topPanel.add(dayLabel);
-        //dayLabel.setAlignmentY(Component.LEFT_ALIGNMENT);
-        
+        topPanel.add(dayLabel);        
+        addApptButton = new JButton("Add Appointment");
+        topPanel.add(addApptButton);
         add(topPanel);
         
-        JPanel bottomPanel = new JPanel(true);
-        bottomPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        //bottomPanel.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        bottomPanel.setLayout(new FlowLayout());
-        //JLabel apptName;
-        
+        // addApptButton prompts user to add an appointment
+        addApptButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Add an Appointment");
+            }
+        });
+
         for (Appointment a : appts) {
-            ApptPanel apanel = new ApptPanel(a);
-            System.out.println("added");
+            // bottomPanel will hold all appointments
+            JPanel bottomPanel = new JPanel(true);
+            bottomPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+            bottomPanel.setLayout(new FlowLayout());
             bottomPanel.setVisible(true);
+            // Display all appointments
+            ApptPanel apanel = new ApptPanel(a);
             bottomPanel.add(apanel);
-            //repaint();
+            // Add option to delete appointments
+            delButton = new JButton("Delete");
+            bottomPanel.add(delButton);
+            add(bottomPanel);
+            delButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Delete this appointment: "+a.getApptName());
+                }
+            });
         }
-        add(bottomPanel);
-        
         pack();
-    }
-    
+    }  
 }
