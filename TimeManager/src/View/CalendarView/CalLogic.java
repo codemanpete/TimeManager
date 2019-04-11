@@ -5,7 +5,7 @@
 *    Calendar
 *    Business Meetings
 *    
-*    Model class - contains calendar logic
+*    CalLogic class - contains calendar logic
 *    
 *Members:
 *    Sean Curtis
@@ -21,7 +21,7 @@ import User.*;
  *
  * @author Sean
  */
-public class Model {
+public class CalLogic {
     private Calendar today;
     private int month;
     private String[] MONTHNAMES = { "January", "February", "March", "April", 
@@ -41,7 +41,7 @@ public class Model {
      * Default Constructor
      * @param user - User object
      */
-    public Model(User user) {
+    public CalLogic(User user) {
         this.user = user;
         today = Calendar.getInstance();
         current = Calendar.getInstance();
@@ -53,7 +53,7 @@ public class Model {
      * Constructor with month variable - to advance to a different month
      * @param month month variable
      */
-    public Model(int month) {
+    public CalLogic(int month) {
         this.month = month;
         today = Calendar.getInstance();
         current = Calendar.getInstance();

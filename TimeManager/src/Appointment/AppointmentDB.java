@@ -22,6 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import timemanager.*;
 /**
  *
@@ -31,6 +32,7 @@ public class AppointmentDB implements DataReadWrite {
 //public class AppointmentDB  {
     private String url;
     private Connection conn;
+    private ArrayList<Appointment> appointments;
     
     /**
      * Constructor
@@ -84,6 +86,7 @@ public class AppointmentDB implements DataReadWrite {
      * @param appt Appointment object
      */
     public void setData(Appointment appt) {
+        
         if (!checkDuplicates(appt.getUserName(), appt.getApptName())) {
         String sql = "INSERT INTO Appointment (username, userid, apptname, startdate, enddate, reminder, location) VALUES(?,?,?,?,?,?,?)";
         //System.out.println(sql);
@@ -186,4 +189,27 @@ public class AppointmentDB implements DataReadWrite {
         return false;
     }
     
+    private void seperate(Appointment appt) {
+        
+            appointments = new ArrayList<Appointment>();
+            Calendar start = appt.getStartTime();
+            Calendar end = appt.getEndTime();
+            for (int i = appt.getStartDay(); i <= appt.getEndDay(); i++) {
+                Appointment temp = new Appointment(appt.getApptName());
+                temp.setStartTime(start.get(Calendar.YEAR), 
+                                  start.get(Calendar.MONTH),
+                                  i,
+                                  start.get(Calendar.HOUR),
+                                  start.get(Calendar.MINUTE));
+                temp.setEndTime(end.get(Calendar.YEAR),
+                                end.get(Calendar.MONTH),
+                                i,
+                                end.get(Calendar.HOUR),
+                                end.get(Calendar.MINUTE));
+                appointments.add(temp);
+            }
+            
+        
+        
+    }
 }

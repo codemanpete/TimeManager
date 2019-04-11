@@ -28,7 +28,7 @@ import View.CalendarDialog.*;
 public class NewDayPanel extends JPanel{
     
     JLabel label;
-        Model model;
+        CalLogic model;
         JFrame topFrame;
         ArrayList<Appointment> todaysAppts = new ArrayList();
         
@@ -37,7 +37,7 @@ public class NewDayPanel extends JPanel{
          * @param label day label
          * @param model CalendarLogic class
          */
-        public NewDayPanel(JLabel label, Model model) {
+        public NewDayPanel(JLabel label, CalLogic model) {
         this.model = model;
         this.label = label;
         

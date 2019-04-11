@@ -33,12 +33,12 @@ public class WeekView extends JPanel {
     private Calendar today = Calendar.getInstance();
     private String[] WEEKDAYS = {"Sunday", "Monday", "Tuesday", "Wednesday",
                              "Thursday", "Friday", "Saturday"};
-    Model model;
+    CalLogic model;
 /**
  * Default Constructor
- * @param model Model object
+ * @param model CalLogic object
  */    
-        public WeekView(Model model) {
+        public WeekView(CalLogic model) {
         this.model = model;
         this.add(makePanel());
     }

@@ -26,7 +26,7 @@ public class MainPanel extends JPanel {
     //MonthView mpanel;
    // WeekView wpanel;
     JPanel calPanel;
-    Model model;
+    CalLogic model;
     
     
     
@@ -35,7 +35,7 @@ public class MainPanel extends JPanel {
      * @param model model object
      * @param user User object
      */
-    public MainPanel(Model model, User user) {
+    public MainPanel(CalLogic model, User user) {
         //setPreferredSize(new Dimension(1500, 1500));
         setLayout(new CardLayout());
         this.model = model;

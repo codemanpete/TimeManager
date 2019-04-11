@@ -27,7 +27,7 @@ public class MonthView extends JPanel {
     
    private Calendar today = Calendar.getInstance();
    int month;
-   Model model;
+   CalLogic model;
    int td;
   
    
@@ -36,7 +36,7 @@ public class MonthView extends JPanel {
      * Default Constructor
      * @param model model object
      */
-    public MonthView(Model model) {
+    public MonthView(CalLogic model) {
         month = today.get(Calendar.MONTH);
         this.model = model;
         

@@ -25,7 +25,7 @@ import View.CalendarView.*;
  */
 public class CalController extends JPanel {
     private MainPanel panel;
-    private Model model;
+    private CalLogic model;
     boolean monthOrWeek;
     private JButton monthSwitch;
     private JButton prevMonth;
@@ -34,9 +34,9 @@ public class CalController extends JPanel {
     /**
      * Default Constructor
      * @param panel MainPanel object
-     * @param model Model object
+     * @param model CalLogic object
      */
-    public CalController(MainPanel panel, Model model) {
+    public CalController(MainPanel panel, CalLogic model) {
         this.panel = panel;
         this.model = model;
         monthOrWeek = true;

@@ -31,7 +31,7 @@ public class MainFrame extends JFrame {
    // private MonthView mpanel;
    // private WeekView wpanel;
     //JPanel calPanel;
-    private Model model;
+    private CalLogic model;
     private MainPanel main;
    
     private CalController control;
@@ -45,7 +45,7 @@ public class MainFrame extends JFrame {
         //this.mpanel = new MonthView();
         //this.wpanel = new WeekView();
         this.user = user;
-        model = new Model(user);
+        model = new CalLogic(user);
         this.main = new MainPanel(model, user);
        
         JFrame frame = new JFrame();
