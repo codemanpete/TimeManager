@@ -18,28 +18,28 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 import View.CalendarPanel.*;
+import User.*;
 
 /**
  *
  * @author Sean
  */
 public class MonthView extends JPanel {
-    
    private Calendar today = Calendar.getInstance();
    int month;
    CalLogic model;
    int td;
-  
-   
-   
+   User user;
+   MainPanel main;
     /**
      * Default Constructor
      * @param model model object
      */
-    public MonthView(CalLogic model) {
+    public MonthView(CalLogic model, User user, MainPanel main) {
         month = today.get(Calendar.MONTH);
         this.model = model;
-        
+        this.user = user;
+        this.main = main;
         this.add(makePanel());
     }
     /**
@@ -54,9 +54,6 @@ public class MonthView extends JPanel {
      * @return JPanel of the calendar panel
      */
     public JPanel makePanel() {
-        
-        
-        
         JPanel panel = new JPanel(true);
         panel.setLayout(new BorderLayout());
         panel.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -70,18 +67,14 @@ public class MonthView extends JPanel {
      * @return a JPanel of the label
      */
     private JPanel makeTopPanel() {
-        
-       
         today.set(Calendar.MONTH, (month));
         JPanel panel = new JPanel(true);
         panel.setBorder(BorderFactory.createBevelBorder(1));
         panel.setLayout(new FlowLayout());
         panel.setBackground(Color.white);
-        
         JLabel label = new JLabel(model.getMonthName() + " " + model.getYear());
         label.setForeground(Color.red);
         panel.add(label, BorderLayout.CENTER);
-        
         return panel;
     }
     /**
@@ -92,9 +85,6 @@ public class MonthView extends JPanel {
         JPanel panel = new JPanel(true);
         panel.setBorder(BorderFactory.createLineBorder(Color.black));
         panel.setLayout(new GridLayout(0, 7));
-       
-        
-        
         if (model.getCurrent().get(Calendar.YEAR) == model.getYear() && 
                 model.getCurrent().get(Calendar.MONTH) == model.getMonth()) {
             td = model.getCurrent().get(Calendar.DAY_OF_MONTH);
@@ -102,49 +92,30 @@ public class MonthView extends JPanel {
         else {
             td = 0;
         }
-        
-        
-        
-       
         for (int i = 0; i < 7; i++) {
             JPanel panels = new JPanel(true);
             panels.setBorder(BorderFactory.createLineBorder(Color.black));
-            //JLabel labels = new JLabel(WEEKDAYS[i]);
             JLabel labels = new JLabel(model.getWeekDay(i));
             panels.setPreferredSize(new Dimension(175, 50));
-            
-            
             panels.add(labels, BorderLayout.NORTH);
             panel.add(panels);
         }
-        
-        
         for (int i = 1; i <= (model.getDaysInMonth() + model.getFirstDay() - 1); i++) {
-            
-            
-            
-         
             if (i < (model.getFirstDay()  )) {
                 JPanel panels = new JPanel(true);
                 panels.setBorder(BorderFactory.createLineBorder(Color.black));
                 panel.add(panels);
             }
-            
             else {
-           
             JLabel labels = new JLabel((i - (model.getFirstDay() - 1))+ " ");
             labels.setAlignmentY(Component.LEFT_ALIGNMENT);
-            
-            
             if ((i - (model.getFirstDay() - 1)) == td) {
                 labels.setForeground(Color.red);
             }
-            
-            NewDayPanel panels = new NewDayPanel(labels, model);
-            panels.setBorder(BorderFactory.createLineBorder(Color.black));
-            panels.setPreferredSize(new Dimension(175, 125));
-           
-            panel.add(panels);
+                NewDayPanel panels = new NewDayPanel(labels, model, user);
+                panels.setBorder(BorderFactory.createLineBorder(Color.black));
+                panels.setPreferredSize(new Dimension(175, 125));
+                panel.add(panels);
             }
         }
         return panel;

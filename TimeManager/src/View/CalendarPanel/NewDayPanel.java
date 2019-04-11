@@ -20,68 +20,55 @@ import java.util.*;
 import View.CalendarView.*;
 import Appointment.*;
 import View.CalendarDialog.*;
+import User.*;
 
 /**
  *
  * @author Sean
  */
 public class NewDayPanel extends JPanel{
-    
     JLabel label;
-        CalLogic model;
-        JFrame topFrame;
-        ArrayList<Appointment> todaysAppts = new ArrayList();
+    CalLogic model;
+    JFrame topFrame;
+    User user;
+    ArrayList<Appointment> todaysAppts = new ArrayList();
         
-        /**
-         * NewDayPanel default constructor
-         * @param label day label
-         * @param model CalendarLogic class
-         */
-        public NewDayPanel(JLabel label, CalLogic model) {
+    /**
+     * NewDayPanel default constructor
+     * @param label day label
+     * @param model CalendarLogic class
+     */
+    public NewDayPanel(JLabel label, CalLogic model, User user) {
         this.model = model;
         this.label = label;
-        
+        this.user = user;
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         getTodaysAppts(label);
         initComponents();
-        //addApptPanels();
     }
         /**
          * initComponenets - create the panel
          */
     private void initComponents() {
-
         JLabel dayLabel = new javax.swing.JLabel();
-
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
             }
         });
-        
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-
-        
         dayLabel = label;
         JPanel topPanel = new JPanel(true);
         topPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         topPanel.add(dayLabel);
-        //dayLabel.setAlignmentY(Component.LEFT_ALIGNMENT);
-        
         add(topPanel);
-        
         JLabel apptName;
         
         for (Appointment a : todaysAppts) {
             ApptPanel apanel = new ApptPanel(a);
-            //System.out.println("added");
-            
             add(apanel);
             repaint();
-        }
-
-        
-		
+        }	
     }                       
 /**
  * formMouseClicked - allows day panels to be clicked on
@@ -90,7 +77,7 @@ public class NewDayPanel extends JPanel{
     private void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
         // TODO add your handling code here:
        // System.out.println(label.getText());
-        NewDayWindowPopUp pop = new NewDayWindowPopUp(topFrame, true, label, todaysAppts);
+        NewDayWindowPopUp pop = new NewDayWindowPopUp(topFrame, true, label, todaysAppts, user);
         pop.setLocationRelativeTo(topFrame);
         pop.setVisible(true);
     }
@@ -99,24 +86,16 @@ public class NewDayPanel extends JPanel{
      * @param label 
      */
     private void getTodaysAppts(JLabel label) {
-       //System.out.println(label.getText());
         String today = label.getText();
         Integer td = Integer.parseInt(today.trim());
-        ArrayList<Appointment> temp = model.getAppointments(td);
-        
-        for (Appointment t : temp) {
-           
+        ArrayList<Appointment> temp = model.getAppointments(td);    
+        for (Appointment t : temp) {   
             Calendar day = t.getStartTime();
-            
             if (t != null){
                 if (day.get(Calendar.DATE) == td) {
-                   //System.out.println(t.getApptName());
                     todaysAppts.add(t);
                 }
-            }
-            
+            } 
         }
-        
     }
-    
 }

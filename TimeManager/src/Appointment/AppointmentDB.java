@@ -203,4 +203,13 @@ public class AppointmentDB implements DataReadWrite {
             appointments.add(temp);
         }
     }
+    
+    public void delAppt(Appointment appt){
+        try (Connection conn = this.connect()) {
+            System.out.println("Delete this appointment: "+appt.getApptName());
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+    }
 }

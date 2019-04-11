@@ -28,37 +28,21 @@ import View.CalendarDialog.*;
  * @author Sean
  */
 public class MainFrame extends JFrame {
-   // private MonthView mpanel;
-   // private WeekView wpanel;
-    //JPanel calPanel;
     private CalLogic model;
     private MainPanel main;
-   
     private CalController control;
     private User user;
-    
     /**
      * Default Constructor
      * @param user User object
      */
     public MainFrame(User user) {
-        //this.mpanel = new MonthView();
-        //this.wpanel = new WeekView();
         this.user = user;
         model = new CalLogic(user);
         this.main = new MainPanel(model, user);
-       
         JFrame frame = new JFrame();
         control = new CalController(main, model);
-        //wpanel.setVisible(false);
-        //mpanel.setVisible(true);
-        //JPanel panel1 = new JPanel(true);
         control.setBorder(BorderFactory.createBevelBorder(1));
-        //control.setPreferredSize(new Dimension(50, 50));
-        
-        
-        //weekview panel = new weekview();
-        
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("File");
         JMenuItem addAppt = new JMenuItem("Add Appointment");
@@ -91,11 +75,7 @@ public class MainFrame extends JFrame {
         frame.setLayout(new BorderLayout());
         frame.setJMenuBar(menuBar);
         frame.add(control, BorderLayout.NORTH);
-        //frame.add(panel2, BorderLayout.WEST);
-        //main.add(mpanel, BorderLayout.CENTER);
         frame.add(main);
-        //frame.add(wpanel, BorderLayout.CENTER);
-        
         frame.pack();
         frame.setVisible(true);
     }
@@ -103,20 +83,13 @@ public class MainFrame extends JFrame {
      * changeWeek - Switch to week calendar (Deprecated)
      */
     public void changeWeek() {
-        //calPanel = new WeekView();
-        /*this.remove(mpanel);
-        this.add(wpanel, BorderLayout.CENTER);
-        this.repaint();*/
     }
     /**
      * changeMonth - change to month calendar (Deprecated)
      */
     public void changeMonth() {
-        //this.remove(wpanel);
-        //this.add(mpanel, BorderLayout.CENTER);
         this.repaint();
     }
-    
     
     /**
      * actionPerformed

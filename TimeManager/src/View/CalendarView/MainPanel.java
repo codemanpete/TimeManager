@@ -23,30 +23,20 @@ import User.*;
  * @author Sean
  */
 public class MainPanel extends JPanel {
-    //MonthView mpanel;
-   // WeekView wpanel;
     JPanel calPanel;
     CalLogic model;
-    
-    
-    
+    User user;
     /**
      * Default Constructor
      * @param model model object
      * @param user User object
      */
     public MainPanel(CalLogic model, User user) {
-        //setPreferredSize(new Dimension(1500, 1500));
         setLayout(new CardLayout());
         this.model = model;
-        
-        this.calPanel = new MonthView(model);
-        
-       // this.mpanel = mpanel;
-        //this.wpanel = wpanel;
-        //add(wpanel);
-        add(calPanel);
-        
+        this.user = user;
+        this.calPanel = new MonthView(model, user, this);
+        add(calPanel);   
     }
     /**
      * changeWeek - changes to week view
@@ -56,28 +46,24 @@ public class MainPanel extends JPanel {
         this.calPanel = new WeekView(model);
         add(calPanel);
         revalidate();
-        repaint();
-        
-        
+        repaint();  
     }
     /**
      * changeMonth - changes to month view
      */
     public void changeMonth() {
         removeAll();
-        this.calPanel = new MonthView(model);
+        this.calPanel = new MonthView(model, user, this);
         add(calPanel);
         revalidate();
-        repaint();
-        
+        repaint();  
     }
     /**
      * nextMonth - advances calendar
      */
     public void nextMonth() {
-        
       removeAll();
-      add(calPanel = new MonthView(model));
+      add(calPanel = new MonthView(model, user, this));
       revalidate();
       repaint();
     }
@@ -86,9 +72,8 @@ public class MainPanel extends JPanel {
      */
     public void paintComponent() {
         removeAll();
-        add(calPanel = new MonthView(model));
+        add(calPanel = new MonthView(model, user, this));
         revalidate();
         repaint();
     }
-    
 }

@@ -21,6 +21,9 @@ import Appointment.*;
 import View.CalendarPanel.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import User.*;
+import View.CalendarView.MainPanel;
+
 /**
  *
  * @author Sean
@@ -29,13 +32,17 @@ public class NewDayWindowPopUp extends JDialog {
     JButton delButton, addApptButton;
     JLabel label;
     ArrayList<Appointment> appts;
+    User user;
+    MainPanel main;
+    JFrame frame;
     /**
      * Creates new form DayWindowPopUp
      */
-    public NewDayWindowPopUp(java.awt.Frame parent, boolean modal, JLabel label, ArrayList appts) { 
+    public NewDayWindowPopUp(java.awt.Frame parent, boolean modal, JLabel label, ArrayList appts, User user) { 
         super(parent, modal);
         this.appts = appts;
         this.label = label;
+        this.user = user;
         initComponents();
     }
     /**
@@ -58,7 +65,11 @@ public class NewDayWindowPopUp extends JDialog {
         addApptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println(user.getUserName());
                 System.out.println("Add an Appointment");
+                AddAppointmentDialog apptDialog = new AddAppointmentDialog(frame, true, user, main);
+                apptDialog.setLocationRelativeTo(frame);
+                apptDialog.setVisible(true);
             }
         });
 
@@ -78,6 +89,7 @@ public class NewDayWindowPopUp extends JDialog {
             delButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    System.out.println(user.getUserName());
                     System.out.println("Delete this appointment: "+a.getApptName());
                 }
             });
