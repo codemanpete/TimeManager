@@ -158,6 +158,7 @@ public User() {
     * @param appt Appointment object
     */
    public void remAppointment(Appointment appt) {
+       System.out.println("Delete: "+appt.getApptName());
        apptList.remove(appt);
        Collections.sort(apptList);
    }

@@ -41,7 +41,6 @@ public class Appointment implements Comparable<Appointment> {
     private Location location;
     private int userID;
     
-    
      /**
      * Appointment Class constructor. 
      * @param name String for the Appointment title
@@ -324,5 +323,7 @@ public class Appointment implements Comparable<Appointment> {
        return userID;
    }
  
-   
+   public void deleteAppt(Appointment appt){
+       
+   }
 }

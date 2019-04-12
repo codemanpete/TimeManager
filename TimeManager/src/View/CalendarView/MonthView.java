@@ -112,7 +112,7 @@ public class MonthView extends JPanel {
             if ((i - (model.getFirstDay() - 1)) == td) {
                 labels.setForeground(Color.red);
             }
-                NewDayPanel panels = new NewDayPanel(labels, model, user);
+                NewDayPanel panels = new NewDayPanel(labels, model, user, main);
                 panels.setBorder(BorderFactory.createLineBorder(Color.black));
                 panels.setPreferredSize(new Dimension(175, 125));
                 panel.add(panels);

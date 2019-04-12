@@ -31,6 +31,7 @@ public class NewDayPanel extends JPanel{
     CalLogic model;
     JFrame topFrame;
     User user;
+    MainPanel main;
     ArrayList<Appointment> todaysAppts = new ArrayList();
         
     /**
@@ -38,10 +39,11 @@ public class NewDayPanel extends JPanel{
      * @param label day label
      * @param model CalendarLogic class
      */
-    public NewDayPanel(JLabel label, CalLogic model, User user) {
+    public NewDayPanel(JLabel label, CalLogic model, User user, MainPanel main) {
         this.model = model;
         this.label = label;
         this.user = user;
+        this.main = main;
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         getTodaysAppts(label);
         initComponents();
@@ -76,8 +78,8 @@ public class NewDayPanel extends JPanel{
  */
     private void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
         // TODO add your handling code here:
-       // System.out.println(label.getText());
-        NewDayWindowPopUp pop = new NewDayWindowPopUp(topFrame, true, label, todaysAppts, user);
+        // System.out.println(label.getText());
+        NewDayWindowPopUp pop = new NewDayWindowPopUp(topFrame, true, label, todaysAppts, user, main);
         pop.setLocationRelativeTo(topFrame);
         pop.setVisible(true);
     }

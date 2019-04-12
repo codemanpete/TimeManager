@@ -205,8 +205,21 @@ public class AppointmentDB implements DataReadWrite {
     }
     
     public void delAppt(Appointment appt){
-        try (Connection conn = this.connect()) {
+        java.util.Date javaStartDate = appt.getStartTime().getTime();
+        java.sql.Date sqlStartDate = new java.sql.Date(javaStartDate.getTime());
+        
+        java.util.Date javaEndDate = appt.getEndTime().getTime();
+        java.sql.Date sqlEndDate = new java.sql.Date(javaEndDate.getTime());
+        
+        String sql = "DELETE FROM Appointment WHERE EXISTS (SELECT * FROM Appointment WHERE username = ? AND userid=? AND apptname=?)";
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             System.out.println("Delete this appointment: "+appt.getApptName());
+            pstmt.setString(1, appt.getUserName());
+            pstmt.setInt(2, appt.getuserID());
+            pstmt.setString(3, appt.getApptName());
+            pstmt.executeUpdate();
+            pstmt.close();
         }catch (SQLException e) {
             System.out.println(e.getMessage());
         }
