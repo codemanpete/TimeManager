@@ -82,6 +82,16 @@ public class MonthView extends JPanel {
      * @return a JPanel for the Calendar
      */
     private JPanel makeCalendarPanel() {
+        int daysInMonth;
+        
+        if (model.isLeap() == true) {
+            daysInMonth = model.getDaysInMonthLeap();
+        }
+        else {daysInMonth = model.getDaysInMonth();}
+        
+       
+        
+        
         JPanel panel = new JPanel(true);
         panel.setBorder(BorderFactory.createLineBorder(Color.black));
         panel.setLayout(new GridLayout(0, 7));
@@ -100,7 +110,7 @@ public class MonthView extends JPanel {
             panels.add(labels, BorderLayout.NORTH);
             panel.add(panels);
         }
-        for (int i = 1; i <= (model.getDaysInMonth() + model.getFirstDay() - 1); i++) {
+        for (int i = 1; i <= (daysInMonth + model.getFirstDay() - 1); i++) {
             if (i < (model.getFirstDay()  )) {
                 JPanel panels = new JPanel(true);
                 panels.setBorder(BorderFactory.createLineBorder(Color.black));
