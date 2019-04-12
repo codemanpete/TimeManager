@@ -35,6 +35,7 @@ public class CalLogic {
     private Calendar current;
     
     int[] DAYS_IN_MONTH = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int[] DAYS_IN_MONTH_LEAP = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     private User user;
     
     /**
@@ -90,6 +91,10 @@ public class CalLogic {
     public int getDaysInMonth() {
         return DAYS_IN_MONTH[today.get(Calendar.MONTH)];
     }
+    
+    public int getDaysInMonthLeap() {
+        return DAYS_IN_MONTH_LEAP[today.get(Calendar.MONTH)];
+    }
     /**
      * getToday - returns current date
      * @return int for todays date
@@ -116,7 +121,7 @@ public class CalLogic {
         return WEEKDAYS[today.get(Calendar.DAY_OF_WEEK)];
     }
     /**
-     * getWeekDayInt - returnst he day of the week as an int
+     * getWeekDayInt - returns the day of the week as an int
      * @return int day of the week
      */
     public int getWeekDayInt() {
@@ -151,6 +156,20 @@ public class CalLogic {
      */
     public Calendar getCurrent() {
         return current;
+    }
+    
+    /**
+     * isLeap - returns boolean determining if the year is a leap Year
+     * @return leap boolean 
+     */
+    public boolean isLeap() {
+       int curYear = today.get(Calendar.YEAR);
+       boolean leap = false;
+       if ((curYear % 4 == 0 && curYear % 100 != 0) || curYear % 400 == 0) {
+           leap = true;
+       }
+       
+       return leap;
     }
 
     
