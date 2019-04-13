@@ -92,11 +92,14 @@ public class NewDayPanel extends JPanel{
         Integer td = Integer.parseInt(today.trim());
         ArrayList<Appointment> temp = model.getAppointments(td);    
         for (Appointment t : temp) {   
-            Calendar day = t.getStartTime();
-            if (t != null){
-                if (day.get(Calendar.DATE) == td) {
-                    todaysAppts.add(t);
-                }
+            Calendar sday = t.getStartTime();
+            Calendar eday = t.getEndTime();
+           if (t != null){
+                
+                    //if (sday.get(Calendar.DATE) == td) {
+                        todaysAppts.add(t);
+                    //}
+                  
             } 
         }
     }
