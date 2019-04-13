@@ -16,6 +16,7 @@
 package User;
 import java.util.ArrayList;
 import Appointment.*;
+import java.util.Calendar;
 import java.util.Collections;
 
 /**
@@ -233,7 +234,8 @@ public User() {
    public ArrayList getAppointments(int year, int month, int day) {
        ArrayList<Appointment> appts = new ArrayList();
        for (Appointment a : apptList) {
-           if ((a.getStartYear() == year) && (a.getStartMonth() == month) && (a.getStartDay() == day)) {
+           if ((a.getStartYear() == year) && (a.getStartMonth() == month) && (a.getStartDay() <= day && a.getEndDay() >= day)) {
+              
                appts.add(a);
            }
        }
