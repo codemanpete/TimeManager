@@ -33,13 +33,13 @@ public class WeekView extends JPanel {
     private Calendar today = Calendar.getInstance();
     private String[] WEEKDAYS = {"Sunday", "Monday", "Tuesday", "Wednesday",
                              "Thursday", "Friday", "Saturday"};
-    CalLogic model;
+    WeekLogic model;
 /**
  * Default Constructor
- * @param model CalLogic object
+ * @param model WeekLogic object
  */    
-        public WeekView(CalLogic model) {
-        this.model = model;
+        public WeekView() {
+        this.model = new WeekLogic();
         this.add(makePanel());
     }
     /**
@@ -80,22 +80,23 @@ public class WeekView extends JPanel {
         panel.setLayout(new GridLayout(0, 7));
         
         //int td = today.get(Calendar.DAY_OF_WEEK);
-        int td = model.getWeekDayInt();
-        
+        //int td = model.getWeekDayInt();
+        Calendar dateMaker = model.getFirstDayOfWeek();
         for (int i = 0; i < 7; i++) {
             
-            JLabel labels = new JLabel(model.getWeekDay(i));
+            JLabel labels = new JLabel(WEEKDAYS[i] + " " + (dateMaker.get(Calendar.MONTH) +1) + "/" + dateMaker.get(Calendar.DAY_OF_MONTH));
             JPanel dayPanels = new JPanel(true);
             dayPanels.setBorder(BorderFactory.createLineBorder(Color.black));
             dayPanels.setPreferredSize(new Dimension(175, 600));
            
            
-            if (i == td - 1) {
+            /*if (i == td - 1) {
                 labels.setForeground(Color.red);
             }
-            
+            */
             dayPanels.add(labels, BorderLayout.NORTH);
             panel.add(dayPanels);
+            dateMaker.add(Calendar.DAY_OF_MONTH, 1);
         }
         
         return panel;

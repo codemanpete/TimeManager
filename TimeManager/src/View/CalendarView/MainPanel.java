@@ -43,7 +43,7 @@ public class MainPanel extends JPanel {
      */
     public void changeWeek() {
         removeAll();
-        this.calPanel = new WeekView(model);
+        this.calPanel = new WeekView();
         add(calPanel);
         revalidate();
         repaint();  
