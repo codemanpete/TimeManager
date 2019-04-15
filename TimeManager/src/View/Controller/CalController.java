@@ -54,10 +54,14 @@ public class CalController extends JPanel {
         nextMonth.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int next = model.getMonth();
-                next++;
-                model.setMonth(next);
-                panel.nextMonth();
+                if (monthOrWeek) {
+                    int next = model.getMonth();
+                    next++;
+                    model.setMonth(next);
+                    panel.nextMonth();
+                } else {
+                    panel.incrementWeek();
+                }
             }
         });
         
@@ -67,10 +71,14 @@ public class CalController extends JPanel {
         prevMonth.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int prev = model.getMonth();
-                prev--;
-                model.setMonth(prev);
-                panel.nextMonth();
+                if (monthOrWeek) {
+                    int prev = model.getMonth();
+                    prev--;
+                    model.setMonth(prev);
+                    panel.nextMonth();
+                } else {
+                    panel.decrementWeek();
+                }
             }
         });
         buttonInit();

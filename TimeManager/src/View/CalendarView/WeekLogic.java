@@ -78,6 +78,20 @@ public class WeekLogic {
         tomorrow.add(Calendar.DATE, 1);
         return tomorrow;
     }
+    
+    /**
+     * 
+     */
+    public void incrementWeek() {
+        this.firstDayOfWeek.add(Calendar.DATE, 7);
+    }
+    
+    /**
+     * 
+     */
+    public void decrementWeek() {
+        this.firstDayOfWeek.add(Calendar.DATE, -7);
+    }
 }
 
 

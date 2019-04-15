@@ -26,6 +26,7 @@ public class MainPanel extends JPanel {
     JPanel calPanel;
     CalLogic model;
     User user;
+    WeekLogic weekModel;
     /**
      * Default Constructor
      * @param model model object
@@ -34,6 +35,7 @@ public class MainPanel extends JPanel {
     public MainPanel(CalLogic model, User user) {
         setLayout(new CardLayout());
         this.model = model;
+        this.weekModel = new WeekLogic();
         this.user = user;
         this.calPanel = new MonthView(model, user, this);
         add(calPanel);   
@@ -43,7 +45,7 @@ public class MainPanel extends JPanel {
      */
     public void changeWeek() {
         removeAll();
-        this.calPanel = new WeekView();
+        this.calPanel = new WeekView(weekModel);
         add(calPanel);
         revalidate();
         repaint();  
@@ -73,6 +75,31 @@ public class MainPanel extends JPanel {
     public void paintComponent() {
         removeAll();
         add(calPanel = new MonthView(model, user, this));
+        revalidate();
+        repaint();
+    }
+    
+    /**
+     * 
+     */
+    public void incrementWeek() {
+        removeAll();
+        weekModel.incrementWeek();
+        this.calPanel = new WeekView(weekModel);
+        add(calPanel);
+        revalidate();
+        repaint();
+    }
+    
+    /**
+     * 
+     * 
+     */
+    public void decrementWeek() {
+        removeAll();
+        weekModel.decrementWeek();
+        this.calPanel = new WeekView(weekModel);
+        add(calPanel);
         revalidate();
         repaint();
     }

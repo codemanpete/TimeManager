@@ -38,8 +38,8 @@ public class WeekView extends JPanel {
  * Default Constructor
  * @param model WeekLogic object
  */    
-        public WeekView() {
-        this.model = new WeekLogic();
+        public WeekView(WeekLogic model) {
+        this.model = model;
         this.add(makePanel());
     }
     /**
@@ -101,5 +101,5 @@ public class WeekView extends JPanel {
         
         return panel;
     }
-    
+
 }
