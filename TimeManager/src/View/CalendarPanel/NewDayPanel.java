@@ -28,7 +28,7 @@ import User.*;
  */
 public class NewDayPanel extends JPanel{
     JLabel label;
-    CalLogic model;
+    Calendar date;
     JFrame topFrame;
     User user;
     MainPanel main;
@@ -37,15 +37,14 @@ public class NewDayPanel extends JPanel{
     /**
      * NewDayPanel default constructor
      * @param label day label
-     * @param model CalendarLogic class
      */
-    public NewDayPanel(JLabel label, CalLogic model, User user, MainPanel main) {
-        this.model = model;
+    public NewDayPanel(JLabel label, User user, MainPanel main, Calendar date) {
         this.label = label;
         this.user = user;
         this.main = main;
+        this.date = date;
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        getTodaysAppts(label);
+        getTodaysAppts(date);
         initComponents();
     }
         /**
@@ -87,20 +86,27 @@ public class NewDayPanel extends JPanel{
      * getTodaysAppts - gets the appts from the User arraylist
      * @param label 
      */
-    private void getTodaysAppts(JLabel label) {
-        String today = label.getText();
-        Integer td = Integer.parseInt(today.trim());
-        ArrayList<Appointment> temp = model.getAppointments(td);    
-        for (Appointment t : temp) {   
+    private void getTodaysAppts(Calendar date) {
+        //String today = label.getText();
+        //Integer td = Integer.parseInt(today.trim());
+        
+        Calendar tdStart = (Calendar) date.clone();
+        Calendar tdEnd = (Calendar) date.clone();
+        int year = date.get(Calendar.YEAR);
+        int month = date.get(Calendar.MONTH);
+        int day = date.get(Calendar.DATE);
+        tdStart.set(year, month , day, 0, 0, 0);
+        tdEnd.set(year, month, day, 23, 59, 59);
+        
+        ArrayList<Appointment> allApts = user.getAllAppointments(); 
+        
+        for (Appointment t : allApts) {   
             Calendar sday = t.getStartTime();
             Calendar eday = t.getEndTime();
-           if (t != null){
-                
-                    //if (sday.get(Calendar.DATE) == td) {
+            if (t != null)
+                if (sday.compareTo(tdEnd) <= 0)
+                    if(eday.compareTo(tdStart) >= 0) 
                         todaysAppts.add(t);
-                    //}
-                  
-            } 
         }
     }
 }

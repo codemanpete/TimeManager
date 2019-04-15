@@ -242,4 +242,8 @@ public User() {
        return appts;
    }
    
+   public ArrayList getAllAppointments() {
+       return apptList;
+   }
+   
 }  

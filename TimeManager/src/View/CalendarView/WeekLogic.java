@@ -49,7 +49,7 @@ public class WeekLogic {
     }
     
     /**
-     * Returns the first Sunday
+     * Returns the first Sunday (start of week)
      */
     private Calendar getLastSunday(Calendar date) {
         Calendar thisDay = (Calendar) date.clone();

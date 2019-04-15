@@ -110,19 +110,21 @@ public class MonthView extends JPanel {
             panels.add(labels, BorderLayout.NORTH);
             panel.add(panels);
         }
-        for (int i = 1; i <= (daysInMonth + model.getFirstDay() - 1); i++) {
+        for (int i = 1; i < (daysInMonth + model.getFirstDay()); i++) {
             if (i < (model.getFirstDay()  )) {
                 JPanel panels = new JPanel(true);
                 panels.setBorder(BorderFactory.createLineBorder(Color.black));
                 panel.add(panels);
             }
             else {
-            JLabel labels = new JLabel((i - (model.getFirstDay() - 1))+ " ");
-            labels.setAlignmentY(Component.LEFT_ALIGNMENT);
-            if ((i - (model.getFirstDay() - 1)) == td) {
-                labels.setForeground(Color.red);
-            }
-                NewDayPanel panels = new NewDayPanel(labels, model, user, main);
+                int dateOfMonth = i - (model.getFirstDay()) + 1;
+                JLabel labels = new JLabel(dateOfMonth + " ");
+                labels.setAlignmentY(Component.LEFT_ALIGNMENT);
+                if ((i - (model.getFirstDay() - 1)) == td) {
+                    labels.setForeground(Color.red);
+                }
+                Calendar date = new GregorianCalendar(model.getYear(), model.getMonth(), dateOfMonth);
+                NewDayPanel panels = new NewDayPanel(labels, user, main, date);
                 panels.setBorder(BorderFactory.createLineBorder(Color.black));
                 panels.setPreferredSize(new Dimension(175, 125));
                 panel.add(panels);
