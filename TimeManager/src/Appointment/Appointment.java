@@ -322,8 +322,4 @@ public class Appointment implements Comparable<Appointment> {
    public int getuserID() {
        return userID;
    }
- 
-   public void deleteAppt(Appointment appt){
-       
-   }
 }

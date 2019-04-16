@@ -90,9 +90,17 @@ public class NewDayWindowPopUp extends JDialog {
                 public void actionPerformed(ActionEvent e) {
                     // This removes the database appointment
                     AppointmentDB apptDB = new AppointmentDB("jdbc:sqlite:user.db");
-                    apptDB.delAppt(a);
-                    // This removes the visible appointment
-                    user.remAppointment(a);
+                    int id = apptDB.getRowID(a);
+                    if(id==0){
+                        JOptionPane.showMessageDialog(main,"There are multiple appointments with that name. Please choose.",
+                        "Error",JOptionPane.ERROR_MESSAGE);
+                    }
+                    else{
+                        // This removes the appointment from the DB
+                        apptDB.delAppt(id);
+                        // This removes the visible appointment from the arraylist of appointments
+                        user.remAppointment(a);
+                    }
                     // This repaints the window
                     main.paintComponent();
                 }

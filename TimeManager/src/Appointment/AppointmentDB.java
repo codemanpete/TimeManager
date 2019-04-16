@@ -33,7 +33,7 @@ public class AppointmentDB implements DataReadWrite {
     private String url;
     private Connection conn;
     private ArrayList<Appointment> appointments;
-    
+    private int id;
     /**
      * Constructor
      * @param url String for the SQL DB url 
@@ -164,15 +164,11 @@ public class AppointmentDB implements DataReadWrite {
      */
     private boolean checkDuplicates(String apptname, String userName) {
         String sql = "SELECT username, apptname FROM Appointment";
-        
-        
         try (Connection conn = this.connect(); 
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                
-                if ((userName.compareTo(rs.getString("username")) == 0) && (apptname.compareTo(rs.getString("apptname"))) == 0) {
-                    
+                if ((userName.compareTo(rs.getString("username")) == 0) && (apptname.compareTo(rs.getString("apptname"))) == 0) { 
                     return true;
                 }  
             }
@@ -204,25 +200,47 @@ public class AppointmentDB implements DataReadWrite {
         }
     }
     
-    public void delAppt(Appointment appt){
-        java.util.Date javaStartDate = appt.getStartTime().getTime();
-        java.sql.Date sqlStartDate = new java.sql.Date(javaStartDate.getTime());
-        
-        java.util.Date javaEndDate = appt.getEndTime().getTime();
-        java.sql.Date sqlEndDate = new java.sql.Date(javaEndDate.getTime());
-        
-        String sql = "DELETE FROM Appointment WHERE EXISTS (SELECT * FROM Appointment WHERE username = ? AND userid=? AND apptname=?)";
+    public void delAppt(int id){ 
+        String sql = "DELETE FROM Appointment WHERE id = "+id;
         try (Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            System.out.println("Delete this appointment: "+appt.getApptName());
-            pstmt.setString(1, appt.getUserName());
-            pstmt.setInt(2, appt.getuserID());
-            pstmt.setString(3, appt.getApptName());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
+    }
+    
+    public int getRowID(Appointment appt){
+        String sql = "SELECT id, username, apptname, startdate, enddate, reminder, location "
+                   + "FROM Appointment "
+                   + "WHERE username = '" + appt.getUserName() + "' "
+                   + "AND apptname = '" + appt.getApptName() + "' "
+                   + "AND reminder = '" + appt.getReminder() + "' "
+                   + "AND location = '" + appt.getLocation() + "'";
+        int count = 0;
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getInt("id") +  "\t" + 
+                                   rs.getString("username") + "\t" +
+                                   rs.getString("apptname") + "\t" +
+                                   rs.getDate("startdate") + "\t" +
+                                   rs.getDate("enddate") + "\t" +
+                                   rs.getInt("reminder") + "\t" +
+                                   rs.getString("location"));
+                id = rs.getInt("id");
+                count++;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        if(count == 1){
+            return id;
+        }
+        else
+            return 0;
     }
 }
