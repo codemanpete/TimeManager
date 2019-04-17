@@ -53,7 +53,7 @@ public User() {
        phoneNumber = new String();
        address = new String();
        groupMembership = new ArrayList<String>();
-       setAppointments();
+       //setAppointments();
    }
    /**
     * Parameterized Constructor
@@ -73,7 +73,7 @@ public User() {
        phoneNumber = new String();
        address = new String();
        groupMembership = new ArrayList<String>();
-       setAppointments();
+       //setAppointments();
    }
    /**
     * setUserName - sets user name variable
@@ -217,7 +217,7 @@ public User() {
    /**
     * setAppointments - reads database and adds appointments to arraylist
     */
-   private void setAppointments() {
+   public void setAppointments() {
        String url = new String("jdbc:sqlite:user.db");
        AppointmentDB apptdb = new AppointmentDB(url);
        ArrayList<Appointment> appts;
@@ -243,6 +243,7 @@ public User() {
    }
    
    public ArrayList getAllAppointments() {
+       
        return apptList;
    }
    
