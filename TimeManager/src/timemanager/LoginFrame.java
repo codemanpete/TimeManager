@@ -88,7 +88,12 @@ public class LoginFrame extends JFrame implements ActionListener {
             boolean loginMatch = test.checkUserPW(uname,pass);
             if(loginMatch == true){
                // MainFrame mainframe = new MainFrame();
-                User.User mainuser = new User.User(uname, pass);
+                //User.User mainuser = new User.User(uname, pass);
+                User.User mainuser;
+                User.UserDB db = new User.UserDB("jdbc:sqlite:user.db");
+                mainuser = db.getData(uname);
+                mainuser.setAppointments();
+                
                 frame.dispose();
                 View.CalendarView.MainFrame frame = new View.CalendarView.MainFrame(mainuser);
                 
