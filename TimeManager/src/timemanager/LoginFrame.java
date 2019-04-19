@@ -39,9 +39,9 @@ public class LoginFrame extends JFrame implements ActionListener {
  */
     public LoginFrame() {
         // set the new window frame
-        frame = new JFrame("Login Form");
+        frame = new JFrame("Time Manager Login");
         // create some objects
-        label_login = new JLabel("Login Form");
+        label_login = new JLabel("Time Manager");
         label_login.setForeground(Color.blue);
         label_login.setFont(new Font("Serif", Font.BOLD, 20));
         label_username = new JLabel("Username");
