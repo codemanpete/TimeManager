@@ -49,10 +49,12 @@ public class ApptPanel extends JPanel{
         
         JLabel stopTime  = new JLabel((appt.getEndTime().get(Calendar.HOUR_OF_DAY)) + 
                                         ":" + (appt.getEndTime().get(Calendar.MINUTE) + "0"));
+        JLabel apptID = new JLabel(" " + appt.getAppointmentID());
         panel.add(apptName);
         panel.add(startTime);
         
         panel.add(stopTime);
+        //panel.add(apptID);
         return panel;
     }
     
