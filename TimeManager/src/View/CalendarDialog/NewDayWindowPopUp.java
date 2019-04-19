@@ -54,10 +54,12 @@ public class NewDayWindowPopUp extends JDialog {
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         // Add components to panels
         JLabel dayLabel = new javax.swing.JLabel();
-        dayLabel = label;
+        dayLabel.setText(label.getText());
+        dayLabel.setHorizontalAlignment(JLabel.CENTER);
         JPanel topPanel = new JPanel(true);
         topPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        topPanel.add(dayLabel);        
+        topPanel.setLayout(new BorderLayout());
+        topPanel.add(dayLabel, BorderLayout.NORTH);        
         addApptButton = new JButton("Add Appointment");
         topPanel.add(addApptButton);
         add(topPanel);
