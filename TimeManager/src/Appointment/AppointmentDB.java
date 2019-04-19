@@ -85,11 +85,11 @@ public class AppointmentDB implements DataReadWrite {
      * setData - adds an appointment field to the database
      * @param appt Appointment object
      */
-    public void setData(Appointment appt) {
+    public boolean setData(Appointment appt) {
         
-        if (!checkDuplicates(appt.getUserName(), appt.getApptName())) {
+        if (!checkDuplicates(appt)) {
         String sql = "INSERT INTO Appointment (username, userid, apptname, startdate, enddate, reminder, location) VALUES(?,?,?,?,?,?,?)";
-        //System.out.println(sql);
+        
         
         java.util.Date javaStartDate = appt.getStartTime().getTime();
         java.sql.Date sqlStartDate = new java.sql.Date(javaStartDate.getTime());
@@ -111,7 +111,9 @@ public class AppointmentDB implements DataReadWrite {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return true;
         }
+        return false;
     }
     /**
      * getData - reads database and creates arraylist of appointment objects
@@ -122,6 +124,7 @@ public class AppointmentDB implements DataReadWrite {
         
         String sql = "SELECT id, username, apptname, startdate, enddate, reminder, location FROM Appointment "
                 + "WHERE username LIKE '%" + userName + "%'";
+        //System.out.println(userName);
         ArrayList<Appointment> appts = new ArrayList();
         try {Connection conn = this.connect(); 
                 Statement stmt = conn.createStatement();
@@ -137,7 +140,7 @@ public class AppointmentDB implements DataReadWrite {
                temp.setUserName(rs.getString("username"));
                temp.setApptName(rs.getString("apptname"));
                temp.setLocation(rs.getString("location"));
-               
+               temp.setAppointmentID(rs.getInt("id"));
                
                temp.setStartTime(startdate.getYear() + 1900, startdate.getMonth(), 
                                      startdate.getDate(), startdate.getHours(), startdate.getMinutes());
@@ -162,13 +165,32 @@ public class AppointmentDB implements DataReadWrite {
      * @param userName - username
      * @return true or false
      */
-    private boolean checkDuplicates(String apptname, String userName) {
-        String sql = "SELECT username, apptname FROM Appointment";
+    private boolean checkDuplicates(Appointment appt) {
+        String sql = "SELECT username, apptname, startdate, enddate FROM Appointment";
+       
         try (Connection conn = this.connect(); 
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                if ((userName.compareTo(rs.getString("username")) == 0) && (apptname.compareTo(rs.getString("apptname"))) == 0) { 
+                
+               java.sql.Date sqlstartdate = rs.getDate("startdate");
+               java.sql.Date sqlenddate = rs.getDate("enddate");
+               java.util.Date startdate = new java.util.Date(sqlstartdate.getTime());
+               java.util.Date enddate = new java.util.Date(sqlenddate.getTime());
+               
+               /*
+                System.out.println(appt.getUserName().compareTo(rs.getString("username")));
+                System.out.println(appt.getApptName().compareTo(rs.getString("apptname")));
+                System.out.println(appt.getStartTime().getTime().compareTo(enddate));
+                System.out.println(appt.getStartTime().getTime().compareTo(startdate));
+                */
+               
+                if ((appt.getUserName().compareTo(rs.getString("username")) == 0) 
+                        && appt.getApptName().compareTo(rs.getString("apptname")) == 0
+                        && appt.getStartTime().getTime().compareTo(startdate) >= 0
+                        && appt.getStartTime().getTime().compareTo(enddate) <= 0) {
+                    
+                    
                     return true;
                 }  
             }
