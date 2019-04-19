@@ -22,6 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import timemanager.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -66,7 +67,7 @@ public class UserDB implements DataReadWrite {
         try (Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
-            conn.close();
+            //conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -78,6 +79,7 @@ public class UserDB implements DataReadWrite {
      * @return User object
      */
     public User getData(String userName) {
+        
         String sql = "SELECT id, uname, password FROM user";
         User user = new User();
         
@@ -92,7 +94,7 @@ public class UserDB implements DataReadWrite {
                     user.setPassword(rs.getString("password"));
                     user.setIdNumber(Integer.parseInt(rs.getString("id"))); 
                     rs.close();
-                    conn.close();
+                    //conn.close();
                 }  
             }    
         } catch (SQLException e) {
@@ -146,6 +148,27 @@ public class UserDB implements DataReadWrite {
         }
         
         return false;
+    }
+    
+    public ArrayList getAllUsers() {
+        ArrayList<User> users = new ArrayList();
+        
+        String sql = "SELECT id, uname FROM user";
+        
+        try (Connection conn = this.connect(); 
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                User temp = new User();
+                temp.setUserName(rs.getString("uname"));
+                temp.setIdNumber(rs.getInt("id"));
+                users.add(temp);
+                 
+            }    
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return users;
     }
     
     
