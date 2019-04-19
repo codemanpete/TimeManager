@@ -40,6 +40,7 @@ public class Appointment implements Comparable<Appointment> {
     private int remind;
     private Location location;
     private int userID;
+    private int appointmentID;
     
      /**
      * Appointment Class constructor. 
@@ -321,5 +322,13 @@ public class Appointment implements Comparable<Appointment> {
      */
    public int getuserID() {
        return userID;
+   }
+   
+   public void setAppointmentID(int id) {
+       this.appointmentID = id;
+   }
+   
+   public int getAppointmentID() {
+       return appointmentID;
    }
 }
