@@ -251,17 +251,30 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         appt.setLocation(locationBox.getText());
         appt.setReminder(apptReminder);
         
-        user.addAppointment(appt);
+        //user.addAppointment(appt);
         
         AppointmentDB apptDB = new AppointmentDB("jdbc:sqlite:user.db");
-        apptDB.setData(appt);
+        if (apptDB.setData(appt)) 
+        {
+           InfoDialog diag = new InfoDialog(frame, true, "Appointment Added");
+           diag.setLocationRelativeTo(frame);
+           diag.setVisible(true);
+           
+           user.setAppointments();
+           main.paintComponent();
+           dispose(); 
+        }
+        else {
+            InfoDialog diag = new InfoDialog(frame, true, "Duplicate Appointment Exists");
+            diag.setLocationRelativeTo(frame);
+            diag.setVisible(true);
+        }
         
-        InfoDialog diag = new InfoDialog(frame, true, "Appointment Added");
-        diag.setLocationRelativeTo(frame);
-        diag.setVisible(true);
+            
+            
+            
         
-        main.paintComponent();
-        dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 /**
  * jButton2ActionPerformed - event handler for button2
