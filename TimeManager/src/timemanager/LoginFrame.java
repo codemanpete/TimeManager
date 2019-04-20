@@ -100,6 +100,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                 uadb.initialize();
                 frame.dispose();
                 View.CalendarView.MainFrame frame = new View.CalendarView.MainFrame(mainuser);
+                test.closeConn();
                 
             }
             else{
