@@ -17,6 +17,7 @@ package View.CalendarDialog;
 
 import java.awt.Frame;
 import User.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -141,16 +142,26 @@ public class AddUserDialog extends javax.swing.JDialog {
             user.setPassword(pass2);
             userDB.setData(user);
             
+            
+            JOptionPane.showMessageDialog(this,"Appointment Added!",
+                "Success",JOptionPane.INFORMATION_MESSAGE);
+            /*
             InfoDialog diag = new InfoDialog(frame, true, "User Added");
             diag.setLocationRelativeTo(frame);
             diag.setVisible(true);
+            */
             dispose();
             
         }
         else {
+            
+            JOptionPane.showMessageDialog(this,"Duplicate Appointment Exists!",
+                "Error",JOptionPane.ERROR_MESSAGE); 
+            /*
             InfoDialog diag = new InfoDialog(frame, true, "Passwords Do Not Match!");
             diag.setLocationRelativeTo(frame);
             diag.setVisible(true);
+            */
             //System.out.println("Passwords do not match");
         }
     }//GEN-LAST:event_addUserButtonActionPerformed
