@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import Appointment.*;
 import User.*;
 import View.CalendarView.MainPanel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 //import 
 
@@ -256,18 +257,28 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         AppointmentDB apptDB = new AppointmentDB("jdbc:sqlite:user.db");
         if (apptDB.setData(appt)) 
         {
+          /*
            InfoDialog diag = new InfoDialog(frame, true, "Appointment Added");
            diag.setLocationRelativeTo(frame);
            diag.setVisible(true);
-           
+           */
+            
+           JOptionPane.showMessageDialog(this,"Appointment Added!",
+                "Success",JOptionPane.INFORMATION_MESSAGE); 
+            
            user.setAppointments();
            main.paintComponent();
            dispose(); 
         }
         else {
+            /*
             InfoDialog diag = new InfoDialog(frame, true, "Duplicate Appointment Exists");
             diag.setLocationRelativeTo(frame);
             diag.setVisible(true);
+            */
+            
+            JOptionPane.showMessageDialog(this,"Duplicate Appointment Exists!",
+                "Error",JOptionPane.ERROR_MESSAGE); 
         }
         
             
