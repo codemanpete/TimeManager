@@ -77,14 +77,16 @@ public class UserClass {
                 System.out.println("Check: Building Table");
                 Statement state2 = con.createStatement();
                 state2.execute("CREATE TABLE user(id integer, uname varchar(60), password varchar(60), primary key(id));");
-                PreparedStatement prep = con.prepareStatement("INSERT INTO user (uname, password) values (?,?);");
-                prep.setString(1,"Admin");
-                prep.setString(2,"123");
+                PreparedStatement prep = con.prepareStatement("INSERT INTO user (id, uname, password) values (?,?,?);");
+                prep.setInt(1, 1);
+                prep.setString(2,"Admin");
+                prep.setString(3,"123");
                 prep.execute();
                 
-                PreparedStatement prep2 = con.prepareStatement("INSERT INTO user (uname, password) values (?,?);");
-                prep2.setString(1,"Brendan");
-                prep2.setString(2,"123");
+                PreparedStatement prep2 = con.prepareStatement("INSERT INTO user (id, uname, password) values (?,?,?);");
+                prep2.setInt(1, 2);
+                prep2.setString(2,"Brendan");
+                prep2.setString(3,"123");
                 prep2.execute();
             }
             else{
@@ -178,7 +180,7 @@ public class UserClass {
             }
             rs.close();
             pst.close();
-            con.close();
+           // con.close();
         } catch (SQLException ex) {
             Logger.getLogger(UserClass.class.getName()).log(Level.SEVERE, null, ex);
         }
