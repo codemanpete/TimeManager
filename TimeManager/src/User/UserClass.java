@@ -180,11 +180,20 @@ public class UserClass {
             }
             rs.close();
             pst.close();
-           // con.close();
+            //con.close();
         } catch (SQLException ex) {
             Logger.getLogger(UserClass.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return result;
-    }    
+    }  
+    
+    public void closeConn() {
+        try {
+        con.close();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(UserClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
