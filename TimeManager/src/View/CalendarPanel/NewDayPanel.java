@@ -43,6 +43,7 @@ public class NewDayPanel extends JPanel{
         this.user = user;
         this.main = main;
         this.date = date;
+        
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         getTodaysAppts(date);
         initComponents();
@@ -78,7 +79,7 @@ public class NewDayPanel extends JPanel{
     private void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
         // TODO add your handling code here:
         // System.out.println(label.getText());
-        NewDayWindowPopUp pop = new NewDayWindowPopUp(topFrame, true, label, todaysAppts, user, main);
+        NewDayWindowPopUp pop = new NewDayWindowPopUp(topFrame, true, label, todaysAppts, user, main, date);
         pop.setLocationRelativeTo(topFrame);
         pop.setVisible(true);
     }
