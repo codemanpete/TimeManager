@@ -323,11 +323,17 @@ public class Appointment implements Comparable<Appointment> {
    public int getuserID() {
        return userID;
    }
-   
+   /**
+    * setAppointmentID - sets the appointment ID from the SQL database
+    * @param id integer for the SQL Row ID
+    */
    public void setAppointmentID(int id) {
        this.appointmentID = id;
    }
-   
+   /**
+    * getAppointmentID - returns the row ID for this appointment
+    * @return appointmentID
+    */
    public int getAppointmentID() {
        return appointmentID;
    }
