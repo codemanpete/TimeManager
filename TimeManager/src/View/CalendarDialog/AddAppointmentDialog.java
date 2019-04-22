@@ -32,6 +32,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
     Appointment appt;
         String apptName;
         String apptLocation;
+        String participants;
         int apptStartYear = 2019;
         int apptEndYear = 2019;
         int apptStartMonth = 0;
@@ -93,13 +94,15 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         endHour = new javax.swing.JComboBox<>();
         endMinute = new javax.swing.JComboBox<>();
         reminderMenu = new javax.swing.JComboBox<>();
+        ParticipantList = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Add Appointment");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, -1));
-        getContentPane().add(nameBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 29, 170, -1));
+        getContentPane().add(nameBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 29, 210, -1));
 
         jLabel2.setText("Name:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 32, -1, -1));
@@ -127,7 +130,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
 
         jLabel10.setText("Location:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 184, -1, -1));
-        getContentPane().add(locationBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 181, 237, -1));
+        getContentPane().add(locationBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 187, 230, 20));
 
         jLabel11.setText("Reminder:");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 228, -1, -1));
@@ -138,7 +141,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 300, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, -1, -1));
 
         jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +149,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 300, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, -1, -1));
 
         startMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }));
         startMonth.addActionListener(new java.awt.event.ActionListener() {
@@ -236,6 +239,16 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         });
         getContentPane().add(reminderMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 225, -1, -1));
 
+        ParticipantList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ParticipantListActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ParticipantList, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 270, -1));
+
+        jLabel12.setText("Participants:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
@@ -269,6 +282,8 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
             diag.setLocationRelativeTo(frame);
             diag.setVisible(true);
         }
+        
+        //
         
             
             
@@ -468,6 +483,12 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         this.apptReminder = Integer.parseInt(s);
     }//GEN-LAST:event_reminderMenuActionPerformed
 
+    private void ParticipantListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParticipantListActionPerformed
+        // TODO add your handling code here:
+        participants = ParticipantList.getText();
+        
+    }//GEN-LAST:event_ParticipantListActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -514,6 +535,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
 */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ParticipantList;
     private javax.swing.JComboBox<String> endDay;
     private javax.swing.JComboBox<String> endHour;
     private javax.swing.JComboBox<String> endMinute;
@@ -524,6 +546,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
