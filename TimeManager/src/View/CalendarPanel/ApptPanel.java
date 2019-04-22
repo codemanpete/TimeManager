@@ -57,6 +57,4 @@ public class ApptPanel extends JPanel{
         //panel.add(apptID);
         return panel;
     }
-    
-    
 }
