@@ -83,85 +83,34 @@ public class NewDayWindowPopUp extends JDialog {
             JPanel panel = new JPanel(true);
             panel.setBorder(BorderFactory.createLineBorder(Color.black));
             panel.setLayout(new FlowLayout(FlowLayout.LEFT));
-           // panel.setVisible(true);
             JLabel label = new JLabel(i + ":00");
             panel.add(label);
             for (Appointment a : appts) {
                 if (a.getStartTime().get(Calendar.HOUR_OF_DAY) <= i && a.getEndTime().get(Calendar.HOUR_OF_DAY) > i) {
-                    
                     ApptPanel apanel = new ApptPanel(a);
                     // Add option to delete appointments
                     delButton = new JButton("Delete");
-                   
                     apanel.add(delButton);
                     panel.add(apanel);
                     add(panel);
-            delButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    // This removes the database appointment
-                    AppointmentDB apptDB = new AppointmentDB("jdbc:sqlite:user.db");
-                    int id = apptDB.getRowID(a);
-                    if(id==0){
-                        JOptionPane.showMessageDialog(main,"There are multiple appointments with that name. Please choose.",
-                        "Error",JOptionPane.ERROR_MESSAGE);
-                    }
-                    else{
-                        // This removes the appointment from the DB
-                        apptDB.delAppt(id);
-                        // This removes the visible appointment from the arraylist of appointments
-                        user.remAppointment(a);
-                    }
-                    // This repaints the window
-                    main.paintComponent();
-                }
-            });
-                    
-                    
-                    
+                    delButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            // This removes the database appointment
+                            AppointmentDB apptDB = new AppointmentDB("jdbc:sqlite:user.db");
+                            System.out.println("Row ID and Appointment ID is: "+a.getAppointmentID());
+                            // This removes the appointment from the DB
+                            apptDB.delAppt(a.getAppointmentID());
+                            // This removes the visible appointment from the arraylist of appointments
+                            user.remAppointment(a);
+                            // This repaints the window
+                            main.paintComponent();
+                        }
+                    });       
                 }
             }
-            
-             
-            
             add(panel);
         }
-        
-        /*
-        for (Appointment a : appts) {
-            // bottomPanel will hold all appointments
-            JPanel bottomPanel = new JPanel(true);
-            bottomPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-            bottomPanel.setLayout(new FlowLayout());
-            bottomPanel.setVisible(true);
-            // Display all appointments
-            ApptPanel apanel = new ApptPanel(a);
-            bottomPanel.add(apanel);
-            // Add option to delete appointments
-            delButton = new JButton("Delete");
-            bottomPanel.add(delButton);
-            add(bottomPanel);
-            delButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    // This removes the database appointment
-                    AppointmentDB apptDB = new AppointmentDB("jdbc:sqlite:user.db");
-                    int id = apptDB.getRowID(a);
-                    if(id==0){
-                        JOptionPane.showMessageDialog(main,"There are multiple appointments with that name. Please choose.",
-                        "Error",JOptionPane.ERROR_MESSAGE);
-                    }
-                    else{
-                        // This removes the appointment from the DB
-                        apptDB.delAppt(id);
-                        // This removes the visible appointment from the arraylist of appointments
-                        user.remAppointment(a);
-                    }
-                    // This repaints the window
-                    main.paintComponent();
-                }
-            });
-        } */
         pack();
     } 
     
