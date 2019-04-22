@@ -47,7 +47,7 @@ public class MainPanel extends JPanel {
      */
     public void changeWeek() {
         removeAll();
-        this.calPanel = new WeekView(weekModel, user, this);
+        this.calPanel = new WeekView(weekModel);
         weekOrMonth = true;
         add(calPanel);
         revalidate();
@@ -82,7 +82,7 @@ public class MainPanel extends JPanel {
             add(calPanel = new MonthView(model, user, this));
         }
         else {
-            add(calPanel = new WeekView(weekModel, user, this));
+            add(calPanel = new WeekView(weekModel));
         }
         
         //add(calPanel);
@@ -96,7 +96,7 @@ public class MainPanel extends JPanel {
     public void incrementWeek() {
         removeAll();
         weekModel.incrementWeek();
-        this.calPanel = new WeekView(weekModel, user, this);
+        this.calPanel = new WeekView(weekModel);
         add(calPanel);
         revalidate();
         repaint();
@@ -109,7 +109,7 @@ public class MainPanel extends JPanel {
     public void decrementWeek() {
         removeAll();
         weekModel.decrementWeek();
-        this.calPanel = new WeekView(weekModel, user, this);
+        this.calPanel = new WeekView(weekModel);
         add(calPanel);
         revalidate();
         repaint();

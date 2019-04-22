@@ -34,11 +34,11 @@ public class WeekView extends JPanel {
     private String[] WEEKDAYS = {"Sunday", "Monday", "Tuesday", "Wednesday",
                              "Thursday", "Friday", "Saturday"};
     WeekLogic model;
-/**
- * Default Constructor
- * @param model WeekLogic object
- */    
-        public WeekView(WeekLogic model) {
+    /**
+     * Default Constructor
+     * @param model WeekLogic object
+     */    
+    public WeekView(WeekLogic model) {
         this.model = model;
         this.add(makePanel());
     }
