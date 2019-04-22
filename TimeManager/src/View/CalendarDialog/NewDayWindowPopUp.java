@@ -87,7 +87,7 @@ public class NewDayWindowPopUp extends JDialog {
             JLabel label = new JLabel(i + ":00");
             panel.add(label);
             for (Appointment a : appts) {
-                if (a.getStartTime().get(Calendar.HOUR_OF_DAY) <= i && a.getEndTime().get(Calendar.HOUR_OF_DAY) >= i) {
+                if (a.getStartTime().get(Calendar.HOUR_OF_DAY) <= i && a.getEndTime().get(Calendar.HOUR_OF_DAY) > i) {
                     
                     ApptPanel apanel = new ApptPanel(a);
                     // Add option to delete appointments
