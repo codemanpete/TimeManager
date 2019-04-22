@@ -63,7 +63,7 @@ public class NewDayPanel extends JPanel{
         JPanel topPanel = new JPanel(true);
         topPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         topPanel.add(label);
-        add(topPanel);
+        //add(topPanel);
         JLabel apptName;
         
         for (Appointment a : todaysAppts) {
@@ -72,9 +72,11 @@ public class NewDayPanel extends JPanel{
             JLabel appointmentLabel = new JLabel(a.getStartTime().get(Calendar.HOUR_OF_DAY) + 
                                         ":" + a.getStartTime().get(Calendar.MINUTE) + "0 "
                                                 + a.getApptName());
-            add(appointmentLabel);
-            repaint();
-        }	
+            appointmentLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+            topPanel.add(appointmentLabel);
+        }
+        add(topPanel);
+        repaint();
     }                       
 /**
  * formMouseClicked - allows day panels to be clicked on

@@ -119,7 +119,7 @@ public class MonthView extends JPanel {
             else {
                 int dateOfMonth = i - (model.getFirstDay()) + 1;
                 JLabel heading = new JLabel(dateOfMonth + " ");
-                heading.setAlignmentY(Component.LEFT_ALIGNMENT);
+
                 if ((i - (model.getFirstDay() - 1)) == td) {
                     heading.setForeground(Color.red);
                 }
