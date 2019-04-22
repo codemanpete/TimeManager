@@ -20,6 +20,9 @@ import javax.swing.JFrame;
 import Appointment.*;
 import User.*;
 import View.CalendarView.MainPanel;
+import java.util.Calendar;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 //import 
 
@@ -47,6 +50,8 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         User user;
         Frame frame;
         MainPanel main;
+        int curDay;
+        int curMonth;
 
     /**
      * Creates new form AddAppointmentDialog
@@ -58,6 +63,22 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         this.main = main;
         initComponents();
     }
+    
+    public AddAppointmentDialog(java.awt.Frame parent, boolean modal, User user, MainPanel main, int curMonth, int curDay) {
+        super(parent, modal);
+        this.user = user;
+        this.frame = parent;
+        this.main = main;
+        this.curMonth = curMonth;
+        this.curDay = curDay;
+        this.apptStartDay = curDay;
+        this.apptEndDay = curDay;
+        this.apptStartMonth = curMonth;
+        this.apptEndMonth = curMonth;
+        initComponents();
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -152,6 +173,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, -1, -1));
 
         startMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }));
+        startMonth.setSelectedIndex(curMonth);
         startMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startMonthActionPerformed(evt);
@@ -168,6 +190,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         getContentPane().add(startYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 93, -1, -1));
 
         startDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        startDay.setSelectedIndex(curDay - 1);
         startDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startDayActionPerformed(evt);
@@ -192,6 +215,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         getContentPane().add(startMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(506, 93, -1, -1));
 
         endMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }));
+        endMonth.setSelectedIndex(curMonth);
         endMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 endMonthActionPerformed(evt);
@@ -208,6 +232,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         getContentPane().add(endYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 134, -1, -1));
 
         endDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        endDay.setSelectedIndex(curDay - 1);
         endDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 endDayActionPerformed(evt);
@@ -269,18 +294,28 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
         AppointmentDB apptDB = new AppointmentDB("jdbc:sqlite:user.db");
         if (apptDB.setData(appt)) 
         {
+          /*
            InfoDialog diag = new InfoDialog(frame, true, "Appointment Added");
            diag.setLocationRelativeTo(frame);
            diag.setVisible(true);
-           
+           */
+            
+           JOptionPane.showMessageDialog(this,"Appointment Added!",
+                "Success",JOptionPane.INFORMATION_MESSAGE); 
+            
            user.setAppointments();
            main.paintComponent();
            dispose(); 
         }
         else {
+            /*
             InfoDialog diag = new InfoDialog(frame, true, "Duplicate Appointment Exists");
             diag.setLocationRelativeTo(frame);
             diag.setVisible(true);
+            */
+            
+            JOptionPane.showMessageDialog(this,"Duplicate Appointment Exists!",
+                "Error",JOptionPane.ERROR_MESSAGE); 
         }
         
         //

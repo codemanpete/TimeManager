@@ -117,7 +117,7 @@ public class UserDB implements DataReadWrite {
                 pstmt.setString(2, user.getPassword());
                 pstmt.executeUpdate();
                 pstmt.close();
-                conn.close();
+                //conn.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
@@ -162,6 +162,7 @@ public class UserDB implements DataReadWrite {
                 User temp = new User();
                 temp.setUserName(rs.getString("uname"));
                 temp.setIdNumber(rs.getInt("id"));
+                temp.setUserStatus(false);
                 users.add(temp);
                  
             }    

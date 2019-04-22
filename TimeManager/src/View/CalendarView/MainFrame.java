@@ -86,20 +86,33 @@ public class MainFrame extends JFrame {
                ArrayList<User> users = udb.getAllUsers();
                JFrame contact = new JFrame("Contact List");
                contact.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-               contact.setSize(200, 200);
+               contact.setSize(200, 300);
                contact.setLayout(new BorderLayout());
                JPanel panel = new JPanel(true);
                panel.setLayout(new GridLayout(0, 1));
                
+               
                for (User a : users) {
-                   JPanel user = new JPanel();
+                   JPanel userPanel = new JPanel();
+                   userPanel.setLayout(new FlowLayout());
                    JLabel label1 = new JLabel();
                    JLabel label2 = new JLabel();
+                   
+                   if (a.getUserName().compareTo(user.getUserName()) == 0) {
+                       a.setUserStatus(true);
+                   }
+                   
+                   if (a.getUserStatus()) {
+                       label2.setForeground(Color.GREEN);
+                   }
+                   else {
+                       label2.setForeground(Color.red);
+                   }
                    label1.setText(" " + a.getIdNumber());
                    label2.setText(a.getUserName());
-                   user.add(label1);
-                   user.add(label2);
-                   panel.add(user);
+                   userPanel.add(label1);
+                   userPanel.add(label2);
+                   panel.add(userPanel);
                }
                contact.add(panel);
                contact.setVisible(true);
