@@ -27,6 +27,7 @@ public class MainPanel extends JPanel {
     CalLogic model;
     User user;
     WeekLogic weekModel;
+    boolean weekOrMonth;
     /**
      * Default Constructor
      * @param model model object
@@ -38,6 +39,7 @@ public class MainPanel extends JPanel {
         this.weekModel = new WeekLogic();
         this.user = user;
         this.calPanel = new MonthView(model, user, this);
+        weekOrMonth = false;
         add(calPanel);   
     }
     /**
@@ -45,7 +47,8 @@ public class MainPanel extends JPanel {
      */
     public void changeWeek() {
         removeAll();
-        this.calPanel = new WeekView(weekModel);
+        this.calPanel = new WeekView(weekModel, user, this);
+        weekOrMonth = true;
         add(calPanel);
         revalidate();
         repaint();  
@@ -56,6 +59,7 @@ public class MainPanel extends JPanel {
     public void changeMonth() {
         removeAll();
         this.calPanel = new MonthView(model, user, this);
+        weekOrMonth = false;
         add(calPanel);
         revalidate();
         repaint();  
@@ -74,31 +78,38 @@ public class MainPanel extends JPanel {
      */
     public void paintComponent() {
         removeAll();
-        add(calPanel = new MonthView(model, user, this));
+        if (!weekOrMonth) {
+            add(calPanel = new MonthView(model, user, this));
+        }
+        else {
+            add(calPanel = new WeekView(weekModel, user, this));
+        }
+        
+        //add(calPanel);
         revalidate();
         repaint();
     }
     
     /**
-     * 
+     * incrementWeek - increments the week variable
      */
     public void incrementWeek() {
         removeAll();
         weekModel.incrementWeek();
-        this.calPanel = new WeekView(weekModel);
+        this.calPanel = new WeekView(weekModel, user, this);
         add(calPanel);
         revalidate();
         repaint();
     }
     
     /**
-     * 
+     * decrementWeek - decrements the week variable
      * 
      */
     public void decrementWeek() {
         removeAll();
         weekModel.decrementWeek();
-        this.calPanel = new WeekView(weekModel);
+        this.calPanel = new WeekView(weekModel, user, this);
         add(calPanel);
         revalidate();
         repaint();
