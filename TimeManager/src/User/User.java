@@ -221,7 +221,7 @@ public User() {
        String url = new String("jdbc:sqlite:user.db");
        AppointmentDB apptdb = new AppointmentDB(url);
        ArrayList<Appointment> appts;
-       appts = apptdb.getData(userName);
+       appts = apptdb.getData(userName, idNumber);
        this.apptList = appts;
    }
    /**

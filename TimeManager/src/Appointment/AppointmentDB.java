@@ -87,7 +87,7 @@ public class AppointmentDB implements DataReadWrite {
      */
     public boolean setData(Appointment appt) {
         
-        if (!checkDuplicates(appt)) {
+        if (true) {
         String sql = "INSERT INTO Appointment (username, userid, apptname, startdate, enddate, reminder, location) VALUES(?,?,?,?,?,?,?)";
         
         
@@ -120,7 +120,7 @@ public class AppointmentDB implements DataReadWrite {
      * @param userName User to search for
      * @return ArrayList of Appointment objects
      */
-    public ArrayList getData(String userName) {
+    public ArrayList getData(String userName, int userID) {
         
         String sql = "SELECT id, username, apptname, startdate, enddate, reminder, location FROM Appointment "
                 + "WHERE username LIKE '%" + userName + "%'";
@@ -135,7 +135,7 @@ public class AppointmentDB implements DataReadWrite {
                java.util.Date startdate = new java.util.Date(sqlstartdate.getTime());
                java.util.Date enddate = new java.util.Date(sqlenddate.getTime());
                
-               Appointment temp = new Appointment(rs.getString("apptname"));
+               Appointment temp = new Appointment(rs.getString("apptname"), userID);
               // System.out.println(rs.getString("username"));
                temp.setUserName(rs.getString("username"));
                temp.setApptName(rs.getString("apptname"));
@@ -166,7 +166,7 @@ public class AppointmentDB implements DataReadWrite {
      * @return true or false
      */
     private boolean checkDuplicates(Appointment appt) {
-        String sql = "SELECT username, apptname, startdate, enddate FROM Appointment";
+        String sql = "SELECT username, userid, apptname, startdate, enddate FROM Appointment";
        
         try (Connection conn = this.connect(); 
                 Statement stmt = conn.createStatement();
@@ -207,7 +207,7 @@ public class AppointmentDB implements DataReadWrite {
         Calendar start = appt.getStartTime();
         Calendar end = appt.getEndTime();
         for (int i = appt.getStartDay(); i <= appt.getEndDay(); i++) {
-            Appointment temp = new Appointment(appt.getApptName());
+            Appointment temp = new Appointment(appt.getApptName(), 0);
             temp.setStartTime(start.get(Calendar.YEAR), 
                               start.get(Calendar.MONTH),
                               i,
