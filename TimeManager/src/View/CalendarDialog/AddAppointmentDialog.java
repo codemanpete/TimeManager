@@ -285,7 +285,7 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
             System.out.println(splitStr[i]);
         }
         
-        Appointment appt = new Appointment(nameBox.getText());
+        Appointment appt = new Appointment(nameBox.getText(), user.getIdNumber());
         appt.setUserName(user.getUserName());
         appt.setStartTime(apptStartYear, apptStartMonth, apptStartDay, apptStartHour, apptStartMin);
         appt.setEndTime(apptEndYear, apptEndMonth, apptEndDay, apptEndHour, apptEndMin);

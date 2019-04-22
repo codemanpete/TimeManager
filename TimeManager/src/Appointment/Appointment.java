@@ -46,10 +46,11 @@ public class Appointment implements Comparable<Appointment> {
      * Appointment Class constructor. 
      * @param name String for the Appointment title
      */
-    public Appointment(String name) {
-        apptName = new String(name);
-        userList = new ArrayList<String>();
-        assetList = new ArrayList<Asset>();
+    public Appointment(String name, int userID) {
+        this.userID = userID;
+        this.apptName = new String(name);
+        this.userList = new ArrayList<String>();
+        this.assetList = new ArrayList<Asset>();
     }
     
      /**
