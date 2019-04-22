@@ -72,10 +72,10 @@ public class NewDayWindowPopUp extends JDialog {
         addApptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
                 AddAppointmentDialog apptDialog = new AddAppointmentDialog(frame, true, user, main, date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH));
                 apptDialog.setLocationRelativeTo(frame);
                 apptDialog.setVisible(true);
+                dispose();
             }
         });
 
@@ -103,8 +103,11 @@ public class NewDayWindowPopUp extends JDialog {
                             apptDB.delAppt(a.getAppointmentID());
                             // This removes the visible appointment from the arraylist of appointments
                             user.remAppointment(a);
-                            // This repaints the window
+                            // This repaints the Calendar Window
                             main.paintComponent();
+                            // This repaints the Day Window
+                            //remove(apanel);
+                            //repaint();
                         }
                     });       
                 }
