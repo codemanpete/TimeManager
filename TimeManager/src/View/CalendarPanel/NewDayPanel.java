@@ -52,17 +52,18 @@ public class NewDayPanel extends JPanel{
          * initComponenets - create the panel
          */
     private void initComponents() {
-        JLabel dayLabel = new javax.swing.JLabel();
+        //JLabel dayLabel = new javax.swing.JLabel();
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
             }
         });
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        dayLabel = label;
-        JPanel topPanel = new JPanel(true);
-        topPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        topPanel.add(label);
+        
+        //dayLabel = label;
+        //JPanel topPanel = new JPanel(true);
+        setBorder(BorderFactory.createLineBorder(Color.black));
+        add(label);
         //add(topPanel);
         JLabel apptName;
         
@@ -73,9 +74,9 @@ public class NewDayPanel extends JPanel{
                                         ":" + a.getStartTime().get(Calendar.MINUTE) + "0 "
                                                 + a.getApptName());
             appointmentLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-            topPanel.add(appointmentLabel);
+            add(appointmentLabel);
         }
-        add(topPanel);
+        //add(topPanel);
         repaint();
     }                       
 /**

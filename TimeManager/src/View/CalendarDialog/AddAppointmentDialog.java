@@ -33,9 +33,7 @@ import javax.swing.JPanel;
 public class AddAppointmentDialog extends javax.swing.JDialog {
 
     Appointment appt;
-        String apptName;
         String apptLocation;
-        String participants;
         int apptStartYear = 2019;
         int apptEndYear = 2019;
         int apptStartMonth = 0;
@@ -281,7 +279,12 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
  * @param evt 
  */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // split participant string by spaces
+        String[] splitStr = ParticipantList.getText().trim().split("\\s+");
+        for (int i = 0; i<splitStr.length; ++i) {
+            System.out.println(splitStr[i]);
+        }
+        
         Appointment appt = new Appointment(nameBox.getText());
         appt.setUserName(user.getUserName());
         appt.setStartTime(apptStartYear, apptStartMonth, apptStartDay, apptStartHour, apptStartMin);
@@ -520,7 +523,6 @@ public class AddAppointmentDialog extends javax.swing.JDialog {
 
     private void ParticipantListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParticipantListActionPerformed
         // TODO add your handling code here:
-        participants = ParticipantList.getText();
         
     }//GEN-LAST:event_ParticipantListActionPerformed
 

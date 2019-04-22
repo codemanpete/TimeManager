@@ -90,7 +90,7 @@ public class WeekView extends JPanel {
         Calendar dateMaker = model.getFirstDayOfWeek();
         for (int i = 0; i < 7; i++) {
             
-            JLabel heading = new JLabel(WEEKDAYS[i] + " " + (dateMaker.get(Calendar.MONTH) +1) + "/" + dateMaker.get(Calendar.DAY_OF_MONTH));
+            JLabel heading = new JLabel(" " + WEEKDAYS[i] + " " + (dateMaker.get(Calendar.MONTH) +1) + "/" + dateMaker.get(Calendar.DAY_OF_MONTH));
             Calendar date = (Calendar) dateMaker.clone();
             NewDayPanel dayPanel = new NewDayPanel(heading, user, main, date);
             //JPanel dayPanels = new JPanel(true);
