@@ -162,6 +162,7 @@ public class UserDB implements DataReadWrite {
                 User temp = new User();
                 temp.setUserName(rs.getString("uname"));
                 temp.setIdNumber(rs.getInt("id"));
+                temp.setUserStatus(false);
                 users.add(temp);
                  
             }    
