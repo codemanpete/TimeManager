@@ -62,13 +62,17 @@ public class NewDayPanel extends JPanel{
         dayLabel = label;
         JPanel topPanel = new JPanel(true);
         topPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        topPanel.add(dayLabel);
+        topPanel.add(label);
         add(topPanel);
         JLabel apptName;
         
         for (Appointment a : todaysAppts) {
             ApptPanel apanel = new ApptPanel(a);
-            add(apanel);
+            //add(apanel);
+            JLabel appointmentLabel = new JLabel(a.getStartTime().get(Calendar.HOUR_OF_DAY) + 
+                                        ":" + a.getStartTime().get(Calendar.MINUTE) + "0 "
+                                                + a.getApptName());
+            add(appointmentLabel);
             repaint();
         }	
     }                       

@@ -39,7 +39,7 @@ public class ApptPanel extends JPanel{
      */
     private JPanel makePanel() {
         JPanel panel = new JPanel(true);
-        panel.setLayout(new FlowLayout());
+        //panel.setLayout(new FlowLayout());
         //panel.setPreferredSize(new Dimension(10, 10));
         JLabel apptName = new JLabel(appt.getApptName());
         JLabel startTime  = new JLabel((appt.getStartTime().get(Calendar.HOUR_OF_DAY)) + 

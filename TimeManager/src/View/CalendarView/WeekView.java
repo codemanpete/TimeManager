@@ -15,6 +15,8 @@
 */
 package View.CalendarView;
 
+import User.*;
+import View.CalendarPanel.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -34,12 +36,16 @@ public class WeekView extends JPanel {
     private String[] WEEKDAYS = {"Sunday", "Monday", "Tuesday", "Wednesday",
                              "Thursday", "Friday", "Saturday"};
     WeekLogic model;
+    User user;
+    MainPanel main;
     /**
      * Default Constructor
      * @param model WeekLogic object
      */    
-    public WeekView(WeekLogic model) {
+    public WeekView(WeekLogic model, User user, MainPanel main) {
         this.model = model;
+        this.user = user;
+        this.main = main;
         this.add(makePanel());
     }
     /**
@@ -84,18 +90,20 @@ public class WeekView extends JPanel {
         Calendar dateMaker = model.getFirstDayOfWeek();
         for (int i = 0; i < 7; i++) {
             
-            JLabel labels = new JLabel(WEEKDAYS[i] + " " + (dateMaker.get(Calendar.MONTH) +1) + "/" + dateMaker.get(Calendar.DAY_OF_MONTH));
-            JPanel dayPanels = new JPanel(true);
-            dayPanels.setBorder(BorderFactory.createLineBorder(Color.black));
-            dayPanels.setPreferredSize(new Dimension(175, 600));
+            JLabel heading = new JLabel(WEEKDAYS[i] + " " + (dateMaker.get(Calendar.MONTH) +1) + "/" + dateMaker.get(Calendar.DAY_OF_MONTH));
+            Calendar date = (Calendar) dateMaker.clone();
+            NewDayPanel dayPanel = new NewDayPanel(heading, user, main, date);
+            //JPanel dayPanels = new JPanel(true);
+            dayPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+            dayPanel.setPreferredSize(new Dimension(175, 600));
            
            
             /*if (i == td - 1) {
                 labels.setForeground(Color.red);
             }
             */
-            dayPanels.add(labels, BorderLayout.NORTH);
-            panel.add(dayPanels);
+            //dayPanel.add(heading, BorderLayout.NORTH);
+            panel.add(dayPanel);
             dateMaker.add(Calendar.DAY_OF_MONTH, 1);
         }
         

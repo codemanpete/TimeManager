@@ -118,13 +118,13 @@ public class MonthView extends JPanel {
             }
             else {
                 int dateOfMonth = i - (model.getFirstDay()) + 1;
-                JLabel labels = new JLabel(dateOfMonth + " ");
-                labels.setAlignmentY(Component.LEFT_ALIGNMENT);
+                JLabel heading = new JLabel(dateOfMonth + " ");
+                heading.setAlignmentY(Component.LEFT_ALIGNMENT);
                 if ((i - (model.getFirstDay() - 1)) == td) {
-                    labels.setForeground(Color.red);
+                    heading.setForeground(Color.red);
                 }
                 Calendar date = new GregorianCalendar(model.getYear(), model.getMonth(), dateOfMonth);
-                NewDayPanel panels = new NewDayPanel(labels, user, main, date);
+                NewDayPanel panels = new NewDayPanel(heading, user, main, date);
                 panels.setBorder(BorderFactory.createLineBorder(Color.black));
                 panels.setPreferredSize(new Dimension(175, 125));
                 panel.add(panels);
