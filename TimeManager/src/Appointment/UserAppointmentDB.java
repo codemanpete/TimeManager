@@ -82,9 +82,8 @@ public class UserAppointmentDB {
      */
     public void setData(int userID, int apptID) {
         String sql = "INSERT INTO user_Appointment (user_id, appointment_id) VALUES(?,?)";
-        try {
-            Connection conn = this.connect();
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, String.valueOf(userID));
             pstmt.setString(2, String.valueOf(apptID));
             pstmt.executeUpdate();
