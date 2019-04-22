@@ -96,6 +96,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                 User.UserDB db = new User.UserDB("jdbc:sqlite:user.db");
                 mainuser = db.getData(uname);
                 mainuser.setAppointments();
+                mainuser.setUserStatus(true);
                 Appointment.UserAppointmentDB uadb = new Appointment.UserAppointmentDB("jdbc:sqlite:user.db");
                 uadb.initialize();
                 frame.dispose();
