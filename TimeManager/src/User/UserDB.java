@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Sean
+ * @author Sean and Peter Cheng
  */
 public class UserDB implements DataReadWrite {
     

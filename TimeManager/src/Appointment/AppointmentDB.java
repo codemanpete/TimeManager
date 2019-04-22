@@ -87,31 +87,31 @@ public class AppointmentDB implements DataReadWrite {
      */
     public boolean setData(Appointment appt) {
         
-        if (true) {
-        String sql = "INSERT INTO Appointment (username, userid, apptname, startdate, enddate, reminder, location) VALUES(?,?,?,?,?,?,?)";
-        
-        
-        java.util.Date javaStartDate = appt.getStartTime().getTime();
-        java.sql.Date sqlStartDate = new java.sql.Date(javaStartDate.getTime());
-        
-        java.util.Date javaEndDate = appt.getEndTime().getTime();
-        java.sql.Date sqlEndDate = new java.sql.Date(javaEndDate.getTime());
-        
-        try (Connection conn = this.connect(); 
-            PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setString(1, appt.getUserName());
-                pstmt.setInt(2, appt.getuserID());
-                pstmt.setString(3, appt.getApptName());
-                pstmt.setDate(4, sqlStartDate);
-                pstmt.setDate(5, sqlEndDate);
-                pstmt.setInt(6, appt.getReminder());
-                pstmt.setString(7, appt.getLocation());
-                pstmt.executeUpdate();
-                pstmt.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return true;
+        if (!checkDuplicates(appt)) {
+            String sql = "INSERT INTO Appointment (username, userid, apptname, startdate, enddate, reminder, location) VALUES(?,?,?,?,?,?,?)";
+
+
+            java.util.Date javaStartDate = appt.getStartTime().getTime();
+            java.sql.Date sqlStartDate = new java.sql.Date(javaStartDate.getTime());
+
+            java.util.Date javaEndDate = appt.getEndTime().getTime();
+            java.sql.Date sqlEndDate = new java.sql.Date(javaEndDate.getTime());
+
+            try (Connection conn = this.connect(); 
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setString(1, appt.getUserName());
+                    pstmt.setInt(2, appt.getuserID());
+                    pstmt.setString(3, appt.getApptName());
+                    pstmt.setDate(4, sqlStartDate);
+                    pstmt.setDate(5, sqlEndDate);
+                    pstmt.setInt(6, appt.getReminder());
+                    pstmt.setString(7, appt.getLocation());
+                    pstmt.executeUpdate();
+                    pstmt.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+            return true;
         }
         return false;
     }
